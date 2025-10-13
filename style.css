@@ -1,0 +1,85 @@
+/* Estilizações personalizadas para complementar o Tailwind */
+body {
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Estilo para a barra de rolagem */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1e293b; /* slate-800 */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3b82f6; /* blue-500 */
+    border-radius: 10px;
+}
+
+html.light ::-webkit-scrollbar-track {
+    background: #e2e8f0; /* slate-200 */
+}
+
+.font-supercell {
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.nav-link {
+    transition: color 0.2s, transform 0.2s;
+}
+.nav-link:hover {
+    color: #3b82f6; /* blue-500 */
+    transform: translateY(-2px);
+}
+
+.page {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.game-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+.game-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-image {
+    cursor: pointer;
+    transition: transform 0.3s, filter 0.3s;
+}
+.gallery-image:hover {
+    transform: scale(1.03);
+    filter: brightness(1.1);
+}
+
+.like-button.liked {
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+
+#back-to-top {
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.ultra-legendary-text {
+    background: linear-gradient(to right, #ff8a00, #e52e71, #8a2be2, #007cf0, #00dfd8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 900;
+}

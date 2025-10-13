@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supercell Universe - Fan Site</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-900 text-slate-200">
+
+    <header class="bg-slate-800/80 backdrop-blur-sm sticky top-0 z-50 shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" data-page="home" class="text-2xl font-supercell text-white">
+                SUPERCELL
+            </a>
+            <div class="hidden md:flex space-x-4 items-center">
+                <a href="#" data-page="home" class="nav-link text-slate-300">Início</a>
+                <a href="#" data-page="supercell" class="nav-link text-slate-300">Sobre</a>
+                <a href="#" data-page="clash-royale" class="nav-link text-slate-300">Clash Royale</a>
+                <a href="#" data-page="clash-of-clans" class="nav-link text-slate-300">Clash of Clans</a>
+                <a href="#" data-page="brawl-stars" class="nav-link text-slate-300">Brawl Stars</a>
+                <a href="#" data-page="squad-busters" class="nav-link text-slate-300">Squad Busters</a>
+                <a href="#" data-page="mo-co" class="nav-link text-slate-300">Mo.co</a>
+                <a href="#" data-page="boom-beach" class="nav-link text-slate-300">Boom Beach</a>
+                <a href="#" data-page="hay-day" class="nav-link text-slate-300">Hay Day</a>
+                <button id="theme-toggle" class="text-slate-300 hover:text-blue-500 transition-colors">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-800">
+            <a href="#" data-page="home" class="block py-2 px-6 text-slate-300 hover:bg-slate-700">Início</a>
+            <a href="#" data-page="supercell" class="block py-2 px-6 text-slate-300 hover:bg-slate-700">Sobre a Supercell</a>
+            <a href="#" data-page="clash-royale" class="block py-2 px-6 text-slate-300 hover:bg-slate-700">Clash Royale</a>
+            <a href="#" data-page="clash-of-clans" class="block py-2 px-6 text-slate-300 hover:bg-slate-700">Clash of Clans</a>
+            <a href="#" data-page="brawl-stars" class="block py-2 px-6 text-slate-300 hover:bg-slate-700">Brawl Stars</a>
+            <a href="#" data-page="squad-busters" class="block py-2 px-6 text-slate-300 hover:bg-slate-700">Squad Busters</a>
+            <a href="#" data-page="mo-co" class="block py-2 px-6 text-slate-300 hover:bg-slate-700">Mo.co</a>
+            <a href="#" data-page="boom-beach" class="block py-2 px-6 text-slate-300 hover:bg-slate-700">Boom Beach</a>
+            <a href="#" data-page="hay-day" class="block py-2 px-6 text-slate-300 hover:bg-slate-700">Hay Day</a>
+            <div class="px-6 py-2">
+                 <button id="theme-toggle-mobile" class="text-slate-300 hover:text-blue-500 transition-colors w-full text-left">
+                    <i class="fas fa-sun mr-2"></i> Mudar Tema
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-8">
+
+        <section id="home" class="page active">
+            <div class="text-center bg-slate-800 p-8 rounded-xl shadow-2xl">
+                <h1 class="text-5xl font-supercell text-blue-400 mb-4">Super Cell Game Guide</h1>
+                <p class="text-lg text-slate-300 max-w-3xl mx-auto mb-8">Explore os mundos fantásticos criados pela Supercell. Conheça mais sobre a empresa e seus jogos de sucesso que conquistaram milhões de jogadores ao redor do mundo.</p>
+                <button data-page="supercell" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full transition-transform transform hover:scale-105">
+                    Conheça a História
+                </button>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+                <div class="game-card bg-slate-800 rounded-lg overflow-hidden" data-page="clash-royale">
+                    <img src="clash_royale_logo.png" alt="Imagem do Clash Royale" class="w-full h-48 object-contain p-4">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-blue-400">Clash Royale</h3>
+                        <p class="mt-2 text-slate-400">Batalhas épicas em tempo real.</p>
+                    </div>
+                </div>
+                <div class="game-card bg-slate-800 rounded-lg overflow-hidden" data-page="clash-of-clans">
+                    <img src="clash_of_clans_logo.png" alt="Imagem do Clash of Clans" class="w-full h-48 object-contain p-4">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-green-400">Clash of Clans</h3>
+                        <p class="mt-2 text-slate-400">Construa sua vila e lidere seu clã.</p>
+                    </div>
+                </div>
+                <div class="game-card bg-slate-800 rounded-lg overflow-hidden" data-page="brawl-stars">
+                    <img src="brawl_stars_logo.png" alt="Imagem do Brawl Stars" class="w-full h-48 object-contain p-4">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-yellow-400">Brawl Stars</h3>
+                        <p class="mt-2 text-slate-400">Batalhas 3v3 e Battle Royale.</p>
+                    </div>
+                </div>
+                <div class="game-card bg-slate-800 rounded-lg overflow-hidden" data-page="squad-busters">
+                    <img src="squad_busters_logo.png" alt="Imagem do Squad Busters" class="w-full h-48 object-contain p-4">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-cyan-400">Squad Busters</h3>
+                        <p class="mt-2 text-slate-400">Forme seu esquadrão e vença!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 flex justify-center">
+                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full lg:w-auto">
+                    <div class="game-card bg-slate-800 rounded-lg overflow-hidden" data-page="mo-co">
+                        <img src="mo_co_logo.png" alt="Imagem do mo.co" class="w-full h-48 object-contain p-4">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-pink-400">mo.co</h3>
+                            <p class="mt-2 text-slate-400">Cace monstros em um mundo estiloso.</p>
+                        </div>
+                    </div>
+                    <div class="game-card bg-slate-800 rounded-lg overflow-hidden" data-page="hay-day">
+                        <img src="hay_day_logo.png" alt="Imagem do Hay Day" class="w-full h-48 object-contain p-4">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-lime-400">Hay Day</h3>
+                            <p class="mt-2 text-slate-400">Construa a fazenda dos seus sonhos.</p>
+                        </div>
+                    </div>
+                    <div class="game-card bg-slate-800 rounded-lg overflow-hidden" data-page="boom-beach">
+                        <img src="boom_beach_logo.png" alt="Imagem do Boom Beach" class="w-full h-48 object-contain p-4">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-orange-400">Boom Beach</h3>
+                            <p class="mt-2 text-slate-400">Lute pela dominação da praia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="mt-12 text-center">
+                <audio controls class="mx-auto rounded-lg">
+                    <source src="https://placehold.co/audio.mp3" type="audio/mpeg">
+                    Seu navegador não suporta o elemento de áudio.
+                </audio>
+                <p class="text-sm text-slate-500 mt-2">Música tema (placeholder)</p>
+            </div>
+        </section>
+
+        <section id="supercell" class="page">
+            <h2 class="text-4xl font-supercell text-center mb-8 text-blue-400">Sobre a Supercell</h2>
+            <div class="grid md:grid-cols-2 gap-8 items-center bg-slate-800 p-8 rounded-lg">
+                <div>
+                    <p class="mb-4 text-slate-300">A Supercell é uma desenvolvedora de jogos para dispositivos móveis sediada em Helsinque, na Finlândia. Fundada em 2010, a empresa é conhecida por criar jogos que são jogados por dezenas de milhões de pessoas todos os dias.</p>
+                    <p class="mb-4 text-slate-300">O portfólio da Supercell é vasto e abrange grandes sucessos como <strong class="text-blue-400">Clash Royale</strong>, <strong class="text-green-400">Clash of Clans</strong>, <strong class="text-yellow-400">Brawl Stars</strong>, <strong class="text-lime-400">Hay Day</strong>, <strong class="text-orange-400">Boom Beach</strong>, e os mais recentes <strong class="text-cyan-400">Squad Busters</strong> e <strong class="text-pink-400">mo.co</strong>, mostrando a sua versatilidade em criar experiências de jogo amadas mundialmente.</p>
+                    <p class="text-slate-300">A filosofia da Supercell é simples: "Os melhores times fazem os melhores jogos". Eles acreditam em pequenas equipes independentes (células) que têm a liberdade de perseguir suas visões, resultando em jogos de alta qualidade e com grande apelo global.</p>
+                </div>
+                <img src="supercell_logo.png" alt="Logo da Supercell" class="rounded-lg shadow-lg w-full">
+            </div>
+            <div class="grid md:grid-cols-3 gap-6 mt-8">
+                <img src="https://placehold.co/400x300/1e293b/ffffff?text=Time+de+Desenvolvimento" alt="Time de Desenvolvimento" class="rounded-lg">
+                <img src="https://placehold.co/400x300/1e293b/ffffff?text=Outros+Jogos" alt="Outros Jogos da Supercell" class="rounded-lg">
+                <img src="https://placehold.co/400x300/1e293b/ffffff?text=Evento+Mundial" alt="Evento Mundial" class="rounded-lg">
+            </div>
+        </section>
+
+        <section id="clash-royale" class="page">
+            <h2 class="text-4xl font-supercell text-center mb-8 text-blue-400">Clash Royale</h2>
+            
+            <div class="bg-slate-800 p-8 rounded-lg mb-8">
+                <h3 class="text-2xl font-bold mb-4 text-slate-100">O que é Clash Royale?</h3>
+                <p class="text-slate-300 mb-4">Clash Royale é um jogo de estratégia em tempo real que combina elementos de jogos de cartas colecionáveis, tower defense e arena de batalha multiplayer. O objetivo é simples: destruir más torres que o seu adversário em batalhas rápidas e frenéticas. Se destruir a Torre do Rei inimiga, você ganha a partida instantaneamente!</p>
+                
+                <h3 class="text-2xl font-bold mt-6 mb-4 text-slate-100">Como se joga?</h3>
+                <p class="text-slate-300 mb-2"><strong class="text-blue-400">Monte seu Deck:</strong> Antes de batalhar, você monta um "deck" com 8 cartas. Cada carta representa uma tropa, um feitiço ou uma construção com habilidades únicas.</p>
+                <p class="text-slate-300 mb-2"><strong class="text-blue-400">Gerencie seu Elixir:</strong> Durante a batalha, você usa "elixir" para jogar suas cartas. O elixir recarrega com o tempo, então usá-lo com sabedoria para atacar e defender é a chave para a vitória.</p>
+
+                <h3 class="text-2xl font-bold mt-6 mb-4 text-slate-100">Progressão: Troféus e Níveis</h3>
+                <p class="text-slate-300 mb-2"><strong class="text-green-400">Caminho de Troféus:</strong> Ao vencer batalhas, você ganha troféus. Ao perder, você os perde. Acumular troféus faz você subir por diferentes Arenas e Ligas, desbloqueando novas cartas e recompensas pelo caminho.</p>
+                <p class="text-slate-300"><strong class="text-yellow-400">Nível do Rei:</strong> Para deixar suas torres mais fortes, você precisa aumentar o seu "Nível do Rei". Isso é feito ganhando Pontos de Experiência (XP), que são obtidos ao doar e evoluir o nível das suas próprias cartas.</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <img src="https://clashroyale.com/uploaded-images-blog/CR_Blog_DevBlog_PathofLegends_1920x1080.jpg?mtime=20221025134701" alt="Arena de Clash Royale" class="gallery-image rounded-lg w-full h-full object-cover">
+                <img src="https://clashroyale.com/uploaded-images-blog/Clash-Royale-Blog-Anniversary-Evolution-1920x1080.jpg?mtime=20240124095400" alt="Cartas de Clash Royale" class="gallery-image rounded-lg w-full h-full object-cover">
+                <img src="https://supercell.com/images/9a515a42099f66a877969b76d758f278/clash-royale-fan-kit.7d1a2245.jpg" alt="Personagens de Clash Royale" class="gallery-image rounded-lg w-full h-full object-cover">
+                <img src="https://clashroyale.com/uploaded-images/arena_11_2.jpg" alt="Arena Lendária" class="gallery-image rounded-lg w-full h-full object-cover">
+            </div>
+            
+            <div class="space-y-2 max-w-3xl mx-auto">
+                <div class="accordion-item bg-slate-800 rounded-lg">
+                    <button class="accordion-header w-full text-left p-4 font-semibold text-lg hover:bg-slate-700 transition">Arenas do Caminho de Troféus</button>
+                    <div class="accordion-content hidden p-4 border-t border-slate-700">
+                        <p>O jogo possui diversas arenas, cada uma desbloqueada com um certo número de troféus. Elas são:</p>
+                        <ul class="list-disc list-inside mt-2 text-slate-300 space-y-1">
+                            <li>Arena 1: Estádio Goblin (0+ Troféus)</li>
+                            <li>Arena 2: Fosso de Ossos (300+ Troféus)</li>
+                            <li>Arena 3: Cova do Bárbaro (600+ Troféus)</li>
+                            <li>Arena 4: Parquinho da P.E.K.K.A (1000+ Troféus)</li>
+                            <li>Arena 5: Vale dos Feitiços (1300+ Troféus)</li>
+                            <li>Arena 6: Oficina do Construtor (1600+ Troféus)</li>
+                            <li>Arena 7: Arena Real (2000+ Troféus)</li>
+                            <li>Arena 8: Pico Congelado (2300+ Troféus)</li>
+                            <li>Arena 9: Arena da Selva (2600+ Troféus)</li>
+                            <li>Arena 10: Montanha do Porco (3000+ Troféus)</li>
+                            <li>E muitas outras até a Arena Lendária!</li>
+                        </ul>
+                    </div>
+                </div>
+                 <div class="accordion-item bg-slate-800 rounded-lg">
+                    <button class="accordion-header w-full text-left p-4 font-semibold text-lg hover:bg-slate-700 transition">Ligas do Caminho das Lendas</button>
+                    <div class="accordion-content hidden p-4 border-t border-slate-700">
+                        <p>Após alcançar 5000 troféus, você entra no Caminho das Lendas, onde compete para subir nas ligas:</p>
+                        <ul class="list-disc list-inside mt-2 text-slate-300 space-y-1">
+                           <li>Liga 1: Combatente I</li>
+                            <li>Liga 2: Combatente II</li>
+                            <li>Liga 3: Combatente III</li>
+                            <li>Liga 4: Mestre I</li>
+                            <li>Liga 5: Mestre II</li>
+                            <li>Liga 6: Mestre III</li>
+                            <li>Liga 7: Campeão</li>
+                            <li>Liga 8: Grande Campeão</li>
+                            <li>Liga 9: Campeão Real</li>
+                            <li>Liga 10: Campeão Supremo</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-item bg-slate-800 rounded-lg">
+                    <button class="accordion-header w-full text-left p-4 font-semibold text-lg hover:bg-slate-700 transition">Tipos de Cartas</button>
+                    <div class="accordion-content hidden p-4 border-t border-slate-700">
+                        <p>Existem mais de 100 cartas no Clash Royale, divididas em raridades. Cada uma tem um papel único no campo de batalha:</p>
+                        <ul class="list-disc list-inside mt-2 text-slate-300 space-y-1">
+                            <li><strong class="text-slate-100">Comuns:</strong> A base de muitos decks (Ex: Cavaleiro, Arqueiras).</li>
+                            <li><strong class="text-orange-400">Raras:</strong> Cartas versáteis e fortes (Ex: Corredor, Mago).</li>
+                            <li><strong class="text-purple-400">Épicas:</strong> Mudam o rumo do jogo com habilidades especiais (Ex: Príncipe, Balão).</li>
+                            <li><strong class="text-yellow-300">Lendárias:</strong> Cartas com mecânicas únicas e poderosas (Ex: Megacavaleiro, Mago Elétrico).</li>
+                            <li><strong class="text-cyan-400">Campeões:</strong> Tropas de elite com uma habilidade ativável (Ex: Rei Bárbaro, Rainha Arqueira).</li>
+                             <li><strong class="text-green-400">Tropas de Torre:</strong> Mudam a tropa que defende sua torre (Ex: Canhoneira).</li>
+                        </ul>
+                    </div>
+                </div>
+                 <div class="accordion-item bg-slate-800 rounded-lg">
+                    <button class="accordion-header w-full text-left p-4 font-semibold text-lg hover:bg-slate-700 transition">Eventos Atuais e Futuros</button>
+                    <div class="accordion-content hidden p-4 border-t border-slate-700">
+                        <p>Os eventos no Clash Royale mudam constantemente, oferecendo novos desafios e recompensas. Fique de olho na aba de Eventos dentro do jogo para não perder!</p>
+                         <ul class="list-disc list-inside mt-2 text-slate-300 space-y-1">
+                            <li><strong>Eventos Sazonais:</strong> Cada nova temporada traz um tema, novas recompensas no Pass Royale e, às vezes, novas cartas.</li>
+                            <li><strong>Desafios Especiais:</strong> Desafios com regras únicas, como elixir em dobro, decks pré-montados ou para testar uma nova carta.</li>
+                            <li><strong>Torneios Globais:</strong> Competições mundiais onde todos os jogadores tentam conseguir o máximo de vitórias para ganhar prêmios incríveis.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+             <div class="text-center mt-8">
+                <button id="like-cr" class="like-button bg-blue-500 text-white py-2 px-6 rounded-lg text-lg transform hover:scale-105 transition">
+                    <i class="fas fa-crown"></i> Favoritar <span id="like-count-cr" class="ml-2 font-bold bg-white text-blue-600 rounded-full px-2">0</span>
+                </button>
+            </div>
+        </section>
+
+        <section id="clash-of-clans" class="page">
+            <h2 class="text-4xl font-supercell text-center mb-8 text-green-400">Clash of Clans</h2>
+            
+            <div class="bg-slate-800 p-8 rounded-lg mb-8">
+                <h3 class="text-2xl font-bold mb-4 text-slate-100">O que é Clash of Clans?</h3>
+                <p class="text-slate-300 mb-4">Clash of Clans é um jogo épico de estratégia e combate. O objetivo principal é construir sua própria vila, transformando-a em uma fortaleza impenetrável. Você treina um exército de tropas poderosas e se junta a outros jogadores para formar clãs, lutar em Guerras de Clãs e provar seu valor contra milhões de jogadores no mundo todo.</p>
+                
+                <h3 class="text-2xl font-bold mt-6 mb-4 text-slate-100">Como Progredir?</h3>
+                <p class="text-slate-300 mb-2"><strong class="text-yellow-400">Evolua seu Centro de Vila:</strong> O coração da sua base é o Centro de Vila. Melhorá-lo desbloqueia novas construções, defesas, tropas e feitiços. Essa é a principal forma de medir sua progressão no jogo.</p>
+                <p class="text-slate-300 mb-2"><strong class="text-pink-400">Gerencie seus Recursos:</strong> Colete Ouro, Elixir e Elixir Negro para construir e melhorar suas defesas e treinar suas tropas. Saquear vilas inimigas é a forma mais rápida de acumular recursos.</p>
+
+                <h3 class="text-2xl font-bold mt-6 mb-4 text-slate-100">Como Batalhar?</h3>
+                <p class="text-slate-300">As batalhas são o núcleo da ação. Você treina um exército no seu quartel, procura um oponente no modo multiplayer e, em seguida, posiciona estrategicamente suas tropas na vila inimiga. Seu objetivo é destruir o máximo de construções possível, focando no Centro de Vila e nos armazenamentos de recursos para garantir a vitória e um bom saque.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <img src="https://supercell.com/images/1524677934/news_clash-of-clans_2023-06_update.21062635.jpg" alt="Vila de Clash of Clans" class="gallery-image rounded-lg w-full h-full object-cover">
+                <img src="https://clashofclans.com/uploaded-images-blog/clash_of_clans_8th_birthday_art.jpg" alt="Tropas de Clash of Clans" class="gallery-image rounded-lg w-full h-full object-cover">
+                <img src="https://supercell.com/images/1524677934/news_clash-of-clans_2022-12_winter-update.21062635.jpg" alt="Ataque em Clash of Clans" class="gallery-image rounded-lg w-full h-full object-cover">
+                <img src="https://supercell.com/images/1524677934/news_clash-of-clans_2023-05_clash-worlds.21062635.jpg" alt="Guerra de Clãs" class="gallery-image rounded-lg w-full h-full object-cover">
+            </div>
+
+            <div class="space-y-2 max-w-3xl mx-auto">
+                <div class="accordion-item bg-slate-800 rounded-lg">
+                    <button class="accordion-header w-full text-left p-4 font-semibold text-lg hover:bg-slate-700 transition">Principais Tropas</button>
+                    <div class="accordion-content hidden p-4 border-t border-slate-700">
+                        <p>Existem dezenas de tropas, cada uma com sua especialidade:</p>
+                        <ul class="list-disc list-inside mt-2 text-slate-300 space-y-1">
+                            <li><strong>Bárbaros e Arqueiras:</strong> As primeiras tropas, ótimas em grande número.</li>
+                            <li><strong>Gigantes:</strong> Focam em defesas e absorvem muito dano.</li>
+                            <li><strong>Magos:</strong> Causam dano em área à distância.</li>
+                            <li><strong>Dragões:</strong> Unidades aéreas poderosas que cospem fogo.</li>
+                            <li><strong>P.E.K.K.A:</strong> Uma armadura pesada com uma espada devastadora.</li>
+                            <li><strong>Corredores:</strong> Pulam muros e atacam defesas com seus martelos.</li>
+                            <li><strong>Golems e Lava Hounds:</strong> Tropas "tanque" que se dividem em unidades menores ao serem derrotadas.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-item bg-slate-800 rounded-lg">
+                    <button class="accordion-header w-full text-left p-4 font-semibold text-lg hover:bg-slate-700 transition">Modos de Jogo</button>
+                    <div class="accordion-content hidden p-4 border-t border-slate-700">
+                        <p>Além dos ataques normais, o jogo oferece várias outras formas de jogar:</p>
+                        <ul class="list-disc list-inside mt-2 text-slate-300 space-y-1">
+                           <li><strong>Vila Principal:</strong> O modo clássico de atacar vilas de outros jogadores.</li>
+                            <li><strong>Base do Construtor:</strong> Uma segunda vila com tropas e mecânicas de batalha diferentes.</li>
+                            <li><strong>Guerras de Clãs:</strong> Batalhas épicas de clã contra clã por recompensas e glória.</li>
+                            <li><strong>Ligas de Guerra de Clãs:</strong> Uma competição de uma semana entre clãs de nível similar.</li>
+                            <li><strong>Capital do Clã:</strong> Um modo cooperativo onde todo o clã contribui para construir uma base massiva.</li>
+                            <li><strong>Jogos do Clã:</strong> Desafios cooperativos que rendem recompensas mágicas para todos no clã.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-item bg-slate-800 rounded-lg">
+                    <button class="accordion-header w-full text-left p-4 font-semibold text-lg hover:bg-slate-700 transition">Eventos</button>
+                    <div class="accordion-content hidden p-4 border-t border-slate-700">
+                        <p>O jogo está sempre com eventos ativos para manter a jogabilidade interessante:</p>
+                         <ul class="list-disc list-inside mt-2 text-slate-300 space-y-1">
+                            <li><strong>Desafios Sazonais:</strong> Complete desafios diários e semanais para ganhar recompensas exclusivas a cada mês com o Bilhete Dourado.</li>
+                            <li><strong>Eventos de Tropas:</strong> Use tropas específicas com custo de treino reduzido para completar desafios e ganhar prêmios.</li>
+                            <li><strong>Atualizações e Novos Níveis:</strong> A Supercell lança grandes atualizações algumas vezes por ano, trazendo novos níveis para tropas e defesas, e às vezes até novas mecânicas de jogo. Fique de olho nas notícias do jogo para saber o que vem por aí!</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-8">
+                <button id="like-coc" class="like-button bg-green-500 text-white py-2 px-6 rounded-lg text-lg transform hover:scale-105 transition">
+                    <i class="fas fa-thumbs-up"></i> Curtir <span id="like-count-coc" class="ml-2 font-bold bg-white text-green-600 rounded-full px-2">0</span>
+                </button>
+            </div>
+        </section>
+
+        <section id="brawl-stars" class="page">
+            <h2 class="text-4xl font-supercell text-center mb-8 text-yellow-400">Brawl Stars</h2>
+            
+            <div class="bg-slate-800 p-8 rounded-lg mb-8">
+                <h3 class="text-2xl font-bold mb-4 text-slate-100">O que é Brawl Stars?</h3>
+                <p class="text-slate-300 mb-4">Brawl Stars é um jogo de arena de batalha e tiro em terceira pessoa de ritmo acelerado. Jogue com amigos ou sozinho em uma variedade de modos de jogo em menos de três minutos. Desbloqueie e melhore dezenas de Brawlers com super-habilidades, Poderes de Estrela e Acessórios poderosos!</p>
+                <p class="text-slate-300">Colecione visuais exclusivos para se destacar e batalhe em locais misteriosos dentro do universo de Brawl Stars!</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <img src="https://supercell.com/images/1524677934/news_brawl-stars_2024-02_godzilla.21062635.jpg" alt="Evento Godzilla em Brawl Stars" class="gallery-image rounded-lg w-full h-full object-cover">
+                <img src="https://supercell.com/images/1524677934/news_brawl-stars_2023-04_squad-busters.21062635.jpg" alt="Novos Brawlers" class="gallery-image rounded-lg w-full h-full object-cover">
+                <img src="https://supercell.com/images/1524677934/news_brawl-stars_2024-04_melodie-and-mutations.21062635.jpg" alt="Modo de Jogo" class="gallery-image rounded-lg w-full h-full object-cover">
+                <img src="https://supercell.com/images/1524677934/news_brawl-stars_2023-08_starr-drops.21062635.jpg" alt="Recompensas Starr" class="gallery-image rounded-lg w-full h-full object-cover">
+            </div>
+
+            <div class="space-y-2 max-w-4xl mx-auto">
+                <div class="accordion-item bg-slate-800 rounded-lg">
+                    <button class="accordion-header w-full text-left p-4 font-semibold text-lg hover:bg-slate-700 transition">Todos os Brawlers (por Raridade)</button>
+                    <div class="accordion-content hidden p-4 border-t border-slate-700">
+                        <p class="mb-4">O jogo tem dezenas de Brawlers, e novos são adicionados constantemente! Eles se dividem em raridades:</p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="font-bold text-slate-100 mb-2">Caminho de Troféus</h4>
+                                <ul class="list-disc list-inside text-slate-300 text-sm"><li>Shelly, Nita, Colt, Bull, Jessie, Brock, Dynamike, Bo, Tick, 8-Bit, Emz, Stu</li></ul>
+                                <h4 class="font-bold text-green-400 mt-3 mb-2">Raros</h4>
+                                <ul class="list-disc list-inside text-slate-300 text-sm"><li>El Primo, Barley, Poco, Rosa</li></ul>
+                                <h4 class="font-bold text-blue-400 mt-3 mb-2">Super-raros</h4>
+                                <ul class="list-disc list-inside text-slate-300 text-sm"><li>Rico, Darryl, Penny, Carl, Jacky, Gus</li></ul>
+                                <h4 class="font-bold text-purple-400 mt-3 mb-2">Épicos</h4>
+                                <ul class="list-disc list-inside text-slate-300 text-sm"><li>Piper, Pam, Frank, Bibi, Bea, Nani, Edgar, Griff, Grom, Bonnie, Hank, Pearl, Larry & Lawrie, Angelo, Colette, Belle, Ash, Lola, Sam, Mandy, Maisie, Berry, Shade, Meeple, Trunk</li></ul>
+                            </div>
+                             <div>
+                                <h4 class="font-bold text-red-400 mt-3 mb-2 md:mt-0">Míticos</h4>
+                                <ul class="list-disc list-inside text-slate-300 text-sm"><li>Mortis, Tara, Eugênio, Max, Mister P, Sprout, Byron, Squeak, Lou, Ruffs, Buzz, Fang, Eve, Janet, Otis, Buster, Gray, R-T, Willow, Doug, Chuck, Charlie, Mico, Melodie, Lily, Clancy, Moe, Juju, Ollie, Lumi, Alli, Jae-yong, Finx, Mina</li></ul>
+                                <h4 class="font-bold text-yellow-300 mt-3 mb-2">Lendários</h4>
+                                <ul class="list-disc list-inside text-slate-300 text-sm"><li>Spike, Corvo, Leon, Sandy, Amber, Meg, Chester, Cordelius, Kit, Draco, Wattson (surge), Kenji</li></ul>
+                                <h4 class="ultra-legendary-text mt-3 mb-2">Ultra Lendário</h4>
+                                <ul class="list-disc list-inside text-slate-300 text-sm"><li>Kaze</li></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item bg-slate-800 rounded-lg">
+                    <button class="accordion-header w-full text-left p-4 font-semibold text-lg hover:bg-slate-700 transition">Modos de Jogo</button>
+                    <div class="accordion-content hidden p-4 border-t border-slate-700">
+                        <p>Brawl Stars oferece uma enorme variedade de modos de jogo que rotacionam diariamente:</p>
+                        <ul class="list-disc list-inside mt-2 text-slate-300 space-y-1">
+                            <li><strong>Pique-Gema:</strong> O modo 3v3 clássico. Segure 10 gemas para vencer.</li>
+                            <li><strong>Combate (Solo/Duo/Trio):</strong> O modo Battle Royale. Seja o último Brawler de pé.</li>
+                            <li><strong>Fute-Brawl:</strong> Marque dois gols antes do time adversário.</li>
+                            <li><strong>Caça-Estrelas:</strong> Derrote oponentes para ganhar estrelas. O time com mais estrelas vence.</li>
+                            <li><strong>Roubo:</strong> Ataque o cofre inimigo enquanto protege o seu.</li>
+                            <li><strong>Nocaute:</strong> Elimine o time adversário em um formato de melhor de três.</li>
+                            <li><strong>Zona Estratégica:</strong> Fique dentro das zonas marcadas para pontuar e vencer.</li>
+                            <li><strong>Ranqueado:</strong> O modo competitivo principal para testar suas habilidades e subir no placar global.</li>
+                            <li><strong>Eventos de Fim de Semana:</strong> Modos especiais como Robô Chefão, Caos Cibernético e Todos Contra Um.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-item bg-slate-800 rounded-lg">
+                    <button class="accordion-header w-full text-left p-4 font-semibold text-lg hover:bg-slate-700 transition">Eventos e Atualizações</button>
+                    <div class="accordion-content hidden p-4 border-t border-slate-700">
+                        <p>O jogo se mantém novo e empolgante com atualizações constantes:</p>
+                         <ul class="list-disc list-inside mt-2 text-slate-300 space-y-1">
+                            <li><strong>Brawl Pass:</strong> Cada temporada traz um novo Brawl Pass (e o Brawl Pass Plus) com um tema, novos visuais, um Brawler novo e muitas recompensas ao completar missões.</li>
+                            <li><strong>Desafios:</strong> Complete desafios de 12 vitórias para ganhar visuais, sprays e ícones de perfil exclusivos.</li>
+                            <li><strong>Eventos da Comunidade:</strong> Ocasionalmente, a Supercell lança metas para toda a comunidade, como "consigam 40 bilhões de eliminações", que desbloqueiam prêmios para todos os jogadores se atingidas.</li>
+                             <li><strong>Atualizações Futuras:</strong> A Supercell sempre anuncia as novidades no "Brawl Talk", um vídeo mensal ou bimestral no YouTube. Fique de olho para saber sobre os próximos Brawlers, modos de jogo e mudanças no balanceamento!</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-8">
+                <button id="like-bs" class="like-button bg-yellow-500 text-white py-2 px-6 rounded-lg text-lg transform hover:scale-105 transition">
+                    <i class="fas fa-star"></i> Favoritar <span id="like-count-bs" class="ml-2 font-bold bg-white text-yellow-600 rounded-full px-2">0</span>
+                </button>
+            </div>
+        </section>
+
+        <section id="squad-busters" class="page">
+            <h2 class="text-4xl font-supercell text-center mb-8 text-cyan-400">Squad Busters</h2>
+            <div class="bg-slate-800 p-8 rounded-lg mb-8">
+                <h3 class="text-2xl font-bold mb-4 text-slate-100">O que é Squad Busters?</h3>
+                <p class="text-slate-300 mb-4">Se você já se perguntou o que aconteceria se o Bárbaro do Clash, o Colt do Brawl Stars e uma galinha do Hay Day se juntassem, Squad Busters é a sua resposta! Esse é o novo jogo da Supercell, e a bagunça é garantida. É uma mistura maluca de ação e estratégia onde 10 jogadores caem em um mapa com um único objetivo: pegar o máximo de gemas que conseguir.</p>
+                <p class="text-slate-300">A parada é a seguinte: você começa pequeno, com só um personagem. Aí você sai derrotando monstros para juntar moedas e abrir baús, que te dão mais personagens para o time. A parte mais legal? Se você juntar três personagens iguais, eles se fundem e viram uma versão gigante e mega forte! A partida vira uma corrida pra ver quem monta o esquadrão mais poderoso e sobrevive à confusão final para roubar as gemas dos outros. É caótico, divertido e Supercell no seu melhor estilo.</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <img src="https://placehold.co/600x400/1e293b/06b6d4?text=Monte+seu+Esquadrão" alt="Montando um Esquadrão em Squad Busters" class="gallery-image rounded-lg w-full h-full object-cover">
+                <img src="https://placehold.co/600x400/1e293b/06b6d4?text=Batalha+por+Gemas" alt="Batalha por Gemas no centro do mapa" class="gallery-image rounded-lg w-full h-full object-cover">
+                <img src="https://placehold.co/600x400/1e293b/06b6d4?text=Chefes+Gigantes" alt="Derrotando um chefe em Squad Busters" class="gallery-image rounded-lg w-full h-full object-cover">
+                <img src="https://placehold.co/600x400/1e293b/06b6d4?text=Universo+Supercell" alt="Heróis de todos os jogos reunidos" class="gallery-image rounded-lg w-full h-full object-cover">
+            </div>
+
+            <div class="space-y-2 max-w-3xl mx-auto">
+                <div class="accordion-item bg-slate-800 rounded-lg">
+                    <button class="accordion-header w-full text-left p-4 font-semibold text-lg hover:bg-slate-700 transition">Como Jogar: A Caçada por Gemas</button>
+                    <div class="accordion-content hidden p-4 border-t border-slate-700">
+                        <p>A jogabilidade é fácil de aprender, mas difícil de dominar:</p>
+                        <ul class="list-disc list-inside mt-2 text-slate-300 space-y-2">
+                            <li><strong class="text-cyan-400">Comece Pequeno:</strong> Cada partida começa com um personagem. Sua primeira tarefa é derrotar monstros fáceis para coletar moedas.</li>
+                            <li><strong class="text-cyan-400">Abra Baús e Cresça:</strong> Use as moedas para abrir baús espalhados pelo mapa. Cada baú oferece uma escolha de três personagens aleatórios do seu elenco para adicionar ao seu esquadrão.</li>
+                            <li><strong class="text-cyan-400">Faça Fusões:</strong> Juntar três personagens iguais os transforma em uma versão "Fusionada" gigante e muito mais forte, um passo crucial para a vitória.</li>
+                            <li><strong class="text-cyan-400">Batalhe por Gemas:</strong> O objetivo principal é coletar mais gemas que os outros 9 jogadores. Gemas são obtidas ao derrotar monstros e, principalmente, ao eliminar os esquadrões de outros jogadores. A mina de gemas no centro do mapa abre no final, forçando um confronto final épico!</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-item bg-slate-800 rounded-lg">
+                    <button class="accordion-header w-full text-left p-4 font-semibold text-lg hover:bg-slate-700 transition">Personagens e Progressão</button>
+                    <div class="accordion-content hidden p-4 border-t border-slate-700">
+                        <p class="mb-4">O jogo conta com um elenco incrível de personagens de todos os jogos da Supercell, cada um com um papel diferente no esquadrão. Conheça todos:</p>
+                        <div class="grid md:grid-cols-2 gap-x-6 gap-y-4">
+                            <div>
+                                <h4 class="font-bold text-red-400 mb-2">ATACANTES (Dano Principal)</h4>
+                                <ul class="list-disc list-inside text-slate-300 text-sm space-y-1">
+                                    <li><strong>Colt:</strong> Atirador de longa distância.</li>
+                                    <li><strong>El Primo:</strong> Lutador de curta distância que ataca em área.</li>
+                                    <li><strong>Hog Rider:</strong> Rápido, foca em destruir as defesas primeiro.</li>
+                                    <li><strong>Max:</strong> Aumenta a velocidade de todo o esquadrão.</li>
+                                    <li><strong>Shelly:</strong> Causa dano massivo de perto com sua espingarda.</li>
+                                    <li><strong>Mago:</strong> Ataca com bolas de fogo que causam dano em área.</li>
+                                    <li><strong>Rainha Arqueira:</strong> Ataca rapidamente à distância.</li>
+                                </ul>
+                                <h4 class="font-bold text-cyan-400 mt-4 mb-2">VELOCISTAS (Mobilidade e Coleta)</h4>
+                                <ul class="list-disc list-inside text-slate-300 text-sm space-y-1">
+                                    <li><strong>Galinha:</strong> Bota Ovos de Aceleração para aumentar a velocidade.</li>
+                                    <li><strong>Hog Rider:</strong> Também tem a função de velocista.</li>
+                                    <li><strong>Max:</strong> Também tem a função de velocista.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-blue-400 mb-2">DEFENSORES (Tanques)</h4>
+                                <ul class="list-disc list-inside text-slate-300 text-sm space-y-1">
+                                    <li><strong>Rei Bárbaro:</strong> Lidera o ataque e inspira outras tropas.</li>
+                                    <li><strong>El Primo:</strong> Também tem a função de tanque.</li>
+                                </ul>
+                                <h4 class="font-bold text-green-400 mt-4 mb-2">SUPORTE (Cura e Utilidade)</h4>
+                                <ul class="list-disc list-inside text-slate-300 text-sm space-y-1">
+                                    <li><strong>Médica:</strong> Cura o esquadrão ao longo do tempo.</li>
+                                    <li><strong>Bruxa:</strong> Invoca esqueletos para lutar ao seu lado.</li>
+                                </ul>
+                                <h4 class="font-bold text-yellow-400 mt-4 mb-2">SUPRIMENTO (Geram Recursos)</h4>
+                                <ul class="list-disc list-inside text-slate-300 text-sm space-y-1">
+                                    <li><strong>Bárbaro:</strong> Personagem inicial versátil.</li>
+                                    <li><strong>Galinha:</strong> Também gera moedas com o tempo.</li>
+                                    <li><strong>Goblin:</strong> Gera moedas ao derrotar inimigos.</li>
+                                    <li><strong>Greg:</strong> Lenhador que corta árvores e gera moedas.</li>
+                                    <li><strong>Mavis:</strong> Gera moedas ao colher plantações.</li>
+                                    <li><strong>Mercador:</strong> Oferece gemas em troca de moedas.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <h4 class="font-bold text-purple-400 mb-2">De Onde Eles Vieram?</h4>
+                            <p class="text-slate-300 text-sm">A maior diversão é ver personagens de universos diferentes interagindo! Veja as inspirações:</p>
+                            <ul class="list-disc list-inside mt-2 text-slate-300 text-sm space-y-1">
+                                <li><strong>Universo Clash (Clash of Clans / Clash Royale):</strong> Bárbaro, Rei Bárbaro, Rainha Arqueira, Goblin, Mago, Hog Rider, Bruxa.</li>
+                                <li><strong>Brawl Stars:</strong> Colt, El Primo, Shelly, Max, Médica (Pam).</li>
+                                <li><strong>Hay Day:</strong> Galinha, Greg, Mavis.</li>
+                                <li><strong>Boom Beach:</strong> Mercador (similar ao Mercador de Recursos).</li>
+                            </ul>
+                        </div>
+                         <p class="mt-4 text-sm text-slate-400"><strong>Como Desbloquear:</strong> Você libera novos personagens no "Caminho de Jornada" ao jogar e coletar Portais de Energia.</p>
+                         <p class="mt-2 text-sm text-slate-400"><strong>Evolução:</strong> Colete cópias de personagens para evoluí-los de Bebê para Clássico, Super e Ultra, desbloqueando novas habilidades poderosas.</p>
+                    </div>
+                </div>
+                <div class="accordion-item bg-slate-800 rounded-lg">
+                    <button class="accordion-header w-full text-left p-4 font-semibold text-lg hover:bg-slate-700 transition">Mundos e Eventos</button>
+                    <div class="accordion-content hidden p-4 border-t border-slate-700">
+                        <p>Nenhuma partida é igual à outra, graças à variedade de mundos e eventos:</p>
+                         <ul class="list-disc list-inside mt-2 text-slate-300 space-y-2">
+                            <li><strong class="text-green-400">Mundos Diferentes:</strong> As partidas acontecem em vários mundos, cada um com monstros, cenários e "Modificadores" de partida diferentes, que mudam as regras (Ex: mais Goblins, feitiços de Fúria aparecendo no mapa, etc.).</li>
+                            <li><strong class="text-green-400">Eventos Sazonais:</strong> O jogo apresenta eventos temáticos que duram várias semanas. Esses eventos trazem novos personagens, modificadores malucos, visuais e recompensas exclusivas para os jogadores.</li>
+                            <li><strong class="text-green-400">Desafios Especiais:</strong> Fique de olho em desafios por tempo limitado que oferecem grandes recompensas por completar objetivos específicos.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <button id="like-sb" class="like-button bg-cyan-500 text-white py-2 px-6 rounded-lg text-lg transform hover:scale-105 transition">
+                    <i class="fas fa-users"></i> Curtir <span id="like-count-sb" class="ml-2 font-bold bg-white text-cyan-600 rounded-full px-2">0</span>
+                </button>
+            </div>
+        </section>
+
+        <section id="mo-co" class="page">
+            <h2 class="text-4xl font-supercell text-center mb-8 text-pink-400">mo.co</h2>
+            <div class="bg-slate-800 p-8 rounded-lg mb-8">
+                <h3 class="text-2xl font-bold mb-4 text-slate-100">O que é mo.co?</h3>
+                <p class="text-slate-300 mb-4">mo.co é um jogo de caça a monstros com uma estética moderna e urbana. Junte-se aos seus amigos, explore portais para mundos bizarros e lute contra monstros únicos para coletar equipamentos e evoluir seus caçadores. É um jogo que mistura ação, exploração e muita personalização.</p>
+            </div>
+             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <img src="https://placehold.co/600x400/1e293b/ec4899?text=Caçando+Monstros" alt="mo.co caçada" class="gallery-image rounded-lg w-full h-full object-cover">
+                <img src="https://placehold.co/600x400/1e293b/ec4899?text=Equipamentos+Raros" alt="mo.co equipamentos" class="gallery-image rounded-lg w-full h-full object-cover">
+                <img src="https://placehold.co/600x400/1e293b/ec4899?text=Chefes+Épicos" alt="mo.co chefes" class="gallery-image rounded-lg w-full h-full object-cover">
+                <img src="https://placehold.co/600x400/1e293b/ec4899?text=Mundo+Estiloso" alt="mo.co mundo" class="gallery-image rounded-lg w-full h-full object-cover">
+            </div>
+            <div class="text-center mt-8">
+                <button id="like-mc" class="like-button bg-pink-500 text-white py-2 px-6 rounded-lg text-lg transform hover:scale-105 transition">
+                    <i class="fas fa-ghost"></i> Curtir <span id="like-count-mc" class="ml-2 font-bold bg-white text-pink-600 rounded-full px-2">0</span>
+                </button>
+            </div>
+        </section>
+
+        <section id="hay-day" class="page">
+            <h2 class="text-4xl font-supercell text-center mb-8 text-lime-400">Hay Day</h2>
+            <div class="bg-slate-800 p-8 rounded-lg mb-8">
+                <h3 class="text-2xl font-bold mb-4 text-slate-100">O que é Hay Day?</h3>
+                <p class="text-slate-300 mb-4">Hay Day é um dos jogos de fazenda mais populares do mundo. Cultive plantações, crie animais, complete pedidos de caminhão e barco, e construa a fazenda mais bonita de todas. Jogue com amigos na sua vizinhança para trocar itens e competir em corridas emocionantes.</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <img src="https://placehold.co/600x400/1e293b/a3e635?text=Sua+Fazenda" alt="Hay Day Fazenda" class="gallery-image rounded-lg w-full h-full object-cover">
+                <img src="https://placehold.co/600x400/1e293b/a3e635?text=Animais+Felizes" alt="Hay Day Animais" class="gallery-image rounded-lg w-full h-full object-cover">
+                <img src="https://placehold.co/600x400/1e293b/a3e635?text=Pedidos+do+Barco" alt="Hay Day Barco" class="gallery-image rounded-lg w-full h-full object-cover">
+                <img src="https://placehold.co/600x400/1e293b/a3e635?text=Corrida+da+Vizinhança" alt="Hay Day Corrida" class="gallery-image rounded-lg w-full h-full object-cover">
+            </div>
+            <div class="text-center mt-8">
+                <button id="like-hd" class="like-button bg-lime-500 text-white py-2 px-6 rounded-lg text-lg transform hover:scale-105 transition">
+                    <i class="fas fa-tractor"></i> Curtir <span id="like-count-hd" class="ml-2 font-bold bg-white text-lime-600 rounded-full px-2">0</span>
+                </button>
+            </div>
+        </section>
+
+        <section id="boom-beach" class="page">
+            <h2 class="text-4xl font-supercell text-center mb-8 text-orange-400">Boom Beach</h2>
+            <div class="bg-slate-800 p-8 rounded-lg mb-8">
+                <h3 class="text-2xl font-bold mb-4 text-slate-100">O que é Boom Beach?</h3>
+                <p class="text-slate-300 mb-4">Boom Beach é um jogo de estratégia de combate ambientado em um arquipélago tropical. Lute contra a malvada Guarda Sombria, liberte ilhéus escravizados e explore ilhas misteriosas. Forme uma Força-Tarefa com jogadores do mundo todo para enfrentar bases inimigas em operações cooperativas.</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <img src="https://placehold.co/600x400/1e293b/fb923c?text=Ataque+à+Praia" alt="Boom Beach Ataque" class="gallery-image rounded-lg w-full h-full object-cover">
+                <img src="https://placehold.co/600x400/1e293b/fb923c?text=Defenda+sua+Base" alt="Boom Beach Base" class="gallery-image rounded-lg w-full h-full object-cover">
+                <img src="https://placehold.co/600x400/1e293b/fb923c?text=Força-Tarefa" alt="Boom Beach Força-Tarefa" class="gallery-image rounded-lg w-full h-full object-cover">
+                <img src="https://placehold.co/600x400/1e293b/fb923c?text=Heróis+Poderosos" alt="Boom Beach Heróis" class="gallery-image rounded-lg w-full h-full object-cover">
+            </div>
+             <div class="text-center mt-8">
+                <button id="like-bb" class="like-button bg-orange-500 text-white py-2 px-6 rounded-lg text-lg transform hover:scale-105 transition">
+                    <i class="fas fa-bomb"></i> Curtir <span id="like-count-bb" class="ml-2 font-bold bg-white text-orange-600 rounded-full px-2">0</span>
+                </button>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="bg-slate-800 border-t border-slate-700 mt-12">
+        <div class="container mx-auto px-6 py-8 text-center text-slate-400">
+            <p>&copy; 2025 Supercell Universe Fan Site. Todos os direitos reservados.</p>
+            <p class="text-sm mt-2">Este é um site de fã não oficial e não é afiliado à Supercell.</p>
+            <div class="mt-4 flex justify-center space-x-6">
+                <a href="#" class="hover:text-blue-500"><i class="fab fa-youtube text-2xl"></i></a>
+                <a href="#" class="hover:text-blue-500"><i class="fab fa-twitter text-2xl"></i></a>
+                <a href="#" class="hover:text-blue-500"><i class="fab fa-instagram text-2xl"></i></a>
+            </div>
+        </div>
+    </footer>
+    
+    <button id="back-to-top" class="fixed bottom-5 right-5 bg-blue-500 text-white w-12 h-12 rounded-full hidden justify-center items-center shadow-lg hover:bg-blue-600 transition-all opacity-0 transform translate-y-2">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <script src="script.js"></script>
+</body>
+</html>
