@@ -126,7 +126,69 @@ html.light ::-webkit-scrollbar-track {
     position: relative;
     overflow: hidden;
 }
+/* --- ESTILOS DOS BANNERS DE TÍTULO DOS JOGOS --- */
 
+/* CSS Genérico para Banners de Título de Jogo */
+.game-hero {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    padding: 3rem 1.5rem; /* 48px 24px */
+    border-radius: 0.75rem; /* 12px */
+    overflow: hidden;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.5); /* Sombra para legibilidade */
+}
+
+/* Overlay para legibilidade (igual ao home-hero) */
+.game-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(2,6,23,0.65), rgba(2,6,23,0.35));
+    z-index: 0;
+    border-radius: 0.75rem;
+}
+
+/* Garante que o H2/H3 fique por cima do overlay */
+.game-hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* --- Fundos Específicos para cada Jogo --- */
+
+.clash-royale-hero {
+    /* Usando uma das imagens da sua galeria que fica ótima como fundo */
+    background-image: url("");
+}
+
+.clash-of-clans-hero {
+    background-image: url("");
+}
+
+.brawl-stars-hero {
+    /* Note que o nome do seu arquivo pode estar "bralw" */
+    background-image: url(""); 
+}
+
+.squad-busters-hero {
+    /* Note que o nome do seu arquivo pode estar "buster" */
+    background-image: url("");
+}
+
+.mo-co-hero {
+    background-image: url("");
+}
+
+.hay-day-hero {
+    /* Note que seu arquivo tem um espaço duplo "day.  sua" */
+    background-image: url("");
+}
+
+.boom-beach-hero {
+    background-image: url("");
+}
 /* overlay leve para legibilidade */
 .home-hero::before {
     content: "";
