@@ -109,16 +109,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Funcionalidade 5: Acordeão ---
+    // --- Funcionalidade 5: Acordeão (Melhorado com Animação) ---
     const accordionHeaders = document.querySelectorAll('.accordion-header');
     accordionHeaders.forEach(header => {
+        // Remove a classe 'hidden' que o HTML possa ter por padrão (da implementação antiga)
+        const content = header.nextElementSibling;
+        if (content && content.classList.contains('accordion-content')) {
+             content.classList.remove('hidden');
+        }
+
         header.addEventListener('click', () => {
             const content = header.nextElementSibling;
-            if (content) {
-                content.classList.toggle('hidden');
+            if (content && content.classList.contains('accordion-content')) {
+                // Alterna a classe 'open' para disparar a transição CSS
+                header.classList.toggle('open');
+                content.classList.toggle('open');
             }
         });
     });
+
 
     // --- Funcionalidade 6: Botão de Curtir (com Toggle) ---
     const likeButtons = document.querySelectorAll('.like-button');
@@ -147,5 +156,30 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+    
+    // --- (NOVO) Funcionalidade 7: Animação de Scroll (IntersectionObserver) ---
+    // Esta função observa elementos e adiciona uma classe 'scroll-visible' quando
+    // eles entram na tela, disparando a animação CSS.
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('scroll-visible');
+                observer.unobserve(entry.target); // Anima só uma vez
+            }
+        });
+    }, { 
+        threshold: 0.1, // Dispara quando 10% do item está visível
+        rootMargin: '0px 0px -50px 0px' // Começa a animar 50px antes do fundo da tela
+    });
+
+    // Seleciona os elementos que queremos animar ao rolar
+    const elementsToAnimate = document.querySelectorAll(
+        '.game-card, .gallery-image, .accordion-item, .home-hero, .game-hero, .supercell-hero .grid > *'
+    );
+    
+    elementsToAnimate.forEach(el => {
+        el.classList.add('scroll-hidden'); // Adiciona estado inicial (escondido)
+        observer.observe(el); // Começa a observar o elemento
+    });
 
 });

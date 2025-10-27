@@ -1,7 +1,14 @@
 /* Estilizações personalizadas para complementar o Tailwind */
+
+/* --- (MODIFICADO) Transição de Tema Suave --- */
+/* Adiciona transição aos principais elementos de fundo */
+body, header, #mobile-menu, .bg-slate-800, .accordion-item, footer {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
 body {
     font-family: 'Inter', sans-serif;
-    transition: background-color 0.3s, color 0.3s;
+    /* A transição foi movida para a regra acima */
 }
 
 /* Estilo para a barra de rolagem */
@@ -50,7 +57,8 @@ html.light ::-webkit-scrollbar-track {
 }
 
 .game-card {
-    transition: transform 0.3s, box-shadow 0.3s;
+    /* (MODIFICADO) Adiciona background-color à transição */
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s ease;
     cursor: pointer;
 }
 .game-card:hover {
@@ -73,7 +81,8 @@ html.light ::-webkit-scrollbar-track {
 }
 
 #back-to-top {
-    transition: opacity 0.3s, transform 0.3s;
+    /* (MODIFICADO) Adiciona background-color à transição */
+    transition: opacity 0.3s, transform 0.3s, background-color 0.3s ease;
 }
 
 .ultra-legendary-text {
@@ -208,4 +217,72 @@ html.light ::-webkit-scrollbar-track {
 /* pequeno ajuste visual para o título sobre a imagem */
 .home-hero .font-supercell {
     text-shadow: 0 6px 18px rgba(0,0,0,0.6);
+}
+
+/* --- (NOVO) Melhoria 1: Animação de Scroll --- */
+/* Estado inicial (antes de aparecer) */
+.scroll-hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition-delay: 0.1s; /* Pequeno atraso para não ser tão instantâneo */
+}
+
+/* Estado final (visível) */
+.scroll-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- (NOVO) Melhoria 2: Acordeão Animado --- */
+
+/* Adiciona um ícone de seta (chevron) ao cabeçalho */
+.accordion-header {
+    position: relative;
+    cursor: pointer;
+}
+
+.accordion-header::after {
+    content: '\f078'; /* Ícone de seta para baixo (Font Awesome) */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 1.5rem; /* 24px */
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg);
+    transition: transform 0.4s ease;
+    color: #94a3b8; /* slate-400 */
+}
+
+/* Gira a seta quando o acordeão está aberto */
+.accordion-header.open::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+/* Controla o conteúdo do acordeão com max-height para animação */
+.accordion-content {
+    /* Começa fechado */
+    max-height: 0;
+    overflow: hidden;
+    
+    /* (MODIFICADO) Força a remoção do padding vertical e borda (do p-4 e border-t do HTML) */
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    border-top-width: 0px !important; 
+    
+    /* Define a transição */
+    transition: max-height 0.4s ease-out, 
+                padding-top 0.4s ease-out, 
+                padding-bottom 0.4s ease-out,
+                border-top-width 0.4s ease; /* Adiciona border-top-width à transição */
+}
+
+/* Estado aberto: expande a altura e restaura o padding/borda */
+.accordion-content.open {
+    max-height: 1000px; /* Um valor grande o suficiente para qualquer conteúdo */
+    
+    /* (MODIFICADO) Restaura o padding vertical e borda (do p-4 e border-t do HTML) */
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+    border-top-width: 1px !important;
 }
