@@ -83,3 +83,67 @@ html.light ::-webkit-scrollbar-track {
     background-clip: text;
     font-weight: 900;
 }
+
+/* Supercell section background */
+.supercell-hero {
+    background-image: url("IMAGENS/imagen de fundo sobre a supercell.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+
+/* leve overlay para garantir legibilidade do texto */
+.supercell-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(2,6,23,0.7), rgba(2,6,23,0.7));
+    z-index: 0;
+}
+
+/* mantém o conteúdo acima do overlay */
+.supercell-hero .container-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* ajuste opcional para imagens internas manterem borda arredondada */
+.supercell-hero img {
+    border-radius: 0.5rem;
+}
+
+/* Home hero background */
+.home-hero {
+    background-image: url("IMAGENS/imagen de fundo supercell guide.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+}
+
+/* overlay leve para legibilidade */
+.home-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(2,6,23,0.65), rgba(2,6,23,0.35));
+    z-index: 0;
+    border-radius: 0.75rem;
+}
+
+/* garante que o conteúdo fique acima do overlay */
+.home-hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* pequeno ajuste visual para o título sobre a imagem */
+.home-hero .font-supercell {
+    text-shadow: 0 6px 18px rgba(0,0,0,0.6);
+}
