@@ -217,13 +217,35 @@ header.scrolled {
 }
 
 /* --- Fundos Específicos para cada Jogo --- */
+
 .clash-royale-hero {
+    /* Usando uma das imagens da sua galeria que fica ótima como fundo */
     background-image: url("IMAGENS/titulo clash royale 3d-render-luz-de-fundo-azul-e-vermelho-hexagono_.jpg");
 }
+
 .clash-of-clans-hero {
     background-image: url("IMAGENS/titulo clash of clans -green-and-purple-nebula-abstract-background-in-3d-rendering-image_3776661.jpg");
 }
-/* ... (outros fundos de herói) ... */
+
+.brawl-stars-hero {
+    /* Note que o nome do seu arquivo pode estar "bralw" */
+    background-image: url("IMAGENS/titulo brawl star 3d img de fundo.jpg"); 
+}
+
+.squad-busters-hero {
+    /* Note que o nome do seu arquivo pode estar "buster" */
+    background-image: url("IMAGENS/squad buster titulo 3d img de fundo.jpg");
+}
+
+.mo-co-hero {
+    background-image: url("IMAGENS/mo.co titulu 3d img de fundo .jpg");
+}
+
+.hay-day-hero {
+    /* Note que seu arquivo tem um espaço duplo "day.  sua" */
+    background-image: url("IMAGENS/hay day titulo 3d img de fundo.jpg");
+}
+
 .boom-beach-hero {
     background-image: url("IMAGENS/boom beach titulo  3d img de fundo.webp");
 }
