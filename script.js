@@ -15,6 +15,14 @@ function showPage(pageId) {
         currentPage = pageId;
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
+    // --- MELHORIA: Atualiza links de navegação ativos ---
+    document.querySelectorAll('[data-page]').forEach(link => {
+        link.classList.remove('nav-active');
+        if (link.dataset.page === pageId) {
+            link.classList.add('nav-active');
+        }
+    });
 }
 
 // Função para controlar o menu mobile
@@ -47,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // Mostra a página inicial por padrão
+    // Mostra a página inicial e define o link ativo
     showPage('home');
 
     // --- Funcionalidade 2: Botão do Menu Mobile ---
@@ -86,11 +94,16 @@ document.addEventListener('DOMContentLoaded', () => {
         themeToggleMobile.addEventListener('click', handleThemeToggle);
     }
     
-    // --- Funcionalidade 4: Botão "Voltar ao Topo" ---
+    // --- Funcionalidade 4: Botão "Voltar ao Topo" e Header Dinâmico ---
     const backToTopButton = document.getElementById('back-to-top');
-    if (backToTopButton) {
-        window.onscroll = function() {
-            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+    const header = document.querySelector('header');
+
+    window.onscroll = function() {
+        const scrollPosition = document.body.scrollTop || document.documentElement.scrollTop;
+
+        // Lógica do Botão "Voltar ao Topo"
+        if (backToTopButton) {
+            if (scrollPosition > 100) {
                 backToTopButton.style.display = "flex";
                 backToTopButton.style.opacity = "1";
                 backToTopButton.style.transform = "translateY(0)";
@@ -103,13 +116,26 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }, 300);
             }
-        };
+        }
+        
+        // --- MELHORIA: Lógica do Header Dinâmico ---
+        if (header) {
+            if (scrollPosition > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }
+    };
+    
+    if (backToTopButton) {
         backToTopButton.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
 
-    // --- Funcionalidade 5: Acordeão (Melhorado com Animação) ---
+    // --- (REVERTIDO) Funcionalidade 5: Acordeão (Melhorado com Animação) ---
+    // Esta versão permite que múltiplos acordeões fiquem abertos ao mesmo tempo.
     const accordionHeaders = document.querySelectorAll('.accordion-header');
     accordionHeaders.forEach(header => {
         // Remove a classe 'hidden' que o HTML possa ter por padrão (da implementação antiga)
@@ -128,34 +154,78 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- (REFEITO) Funcionalidade 6: Botão de Curtir (com Toggle e localStorage) ---
+    
+    // Objeto para guardar os contadores de like e botões curtidos
+    let likeCounts = {};
+    let likedButtons = {};
 
-    // --- Funcionalidade 6: Botão de Curtir (com Toggle) ---
+    // Função para salvar os likes no localStorage
+    function saveLikes() {
+        localStorage.setItem('supercellFanLikes', JSON.stringify(likeCounts));
+        localStorage.setItem('supercellFanLikedButtons', JSON.stringify(likedButtons));
+    }
+
+    // Função para carregar os likes do localStorage
+    function loadLikes() {
+        likeCounts = JSON.parse(localStorage.getItem('supercellFanLikes')) || {};
+        likedButtons = JSON.parse(localStorage.getItem('supercellFanLikedButtons')) || {};
+    }
+
+    // Carrega os likes quando a página é iniciada
+    loadLikes();
+    
     const likeButtons = document.querySelectorAll('.like-button');
     likeButtons.forEach(button => {
+        const buttonId = button.id;
+        if (!buttonId) return; // Pula botões sem ID
+
         const icon = button.querySelector('i');
         const textNode = icon.nextSibling;
         const originalText = textNode.textContent;
         const countSpan = button.querySelector('span');
-        let isLiked = false;
+        
+        // Pega o valor inicial do HTML (como fallback)
+        const initialCount = parseInt(countSpan.textContent) || 0;
+        
+        // Define o estado inicial a partir do localStorage
+        let isLiked = likedButtons[buttonId] || false;
+        let currentCount = likeCounts[buttonId] === undefined ? initialCount : likeCounts[buttonId];
+        countSpan.textContent = currentCount;
+
+        // Aplica o estado visual correto no carregamento
+        if (isLiked) {
+            button.classList.add('liked');
+            textNode.textContent = ' Remover ';
+        }
 
         button.addEventListener('click', (event) => {
             event.stopPropagation(); // Impede o clique de navegar na página
             
-            isLiked = !isLiked; // Inverte o estado (curtido/não curtido)
+            isLiked = !isLiked; // Inverte o estado
 
             if (isLiked) {
                 // Ação: Curtir
-                countSpan.textContent = parseInt(countSpan.textContent) + 1;
+                currentCount++;
                 button.classList.add('liked');
                 textNode.textContent = ' Remover ';
+                likedButtons[buttonId] = true;
             } else {
                 // Ação: Remover curtida
-                countSpan.textContent = parseInt(countSpan.textContent) - 1;
+                currentCount--;
                 button.classList.remove('liked');
                 textNode.textContent = originalText;
+                likedButtons[buttonId] = false;
             }
+            
+            // Atualiza o contador na tela e no nosso objeto
+            countSpan.textContent = currentCount;
+            likeCounts[buttonId] = currentCount;
+            
+            // Salva o novo estado no localStorage
+            saveLikes();
         });
-    });
+    });
     
     // --- (NOVO) Funcionalidade 7: Animação de Scroll (IntersectionObserver) ---
     // Esta função observa elementos e adiciona uma classe 'scroll-visible' quando
@@ -181,5 +251,4 @@ document.addEventListener('DOMContentLoaded', () => {
         el.classList.add('scroll-hidden'); // Adiciona estado inicial (escondido)
         observer.observe(el); // Começa a observar o elemento
     });
-
 });

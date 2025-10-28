@@ -15,18 +15,26 @@ body {
 ::-webkit-scrollbar {
     width: 8px;
 }
-
 ::-webkit-scrollbar-track {
     background: #1e293b; /* slate-800 */
 }
-
 ::-webkit-scrollbar-thumb {
     background: #3b82f6; /* blue-500 */
     border-radius: 10px;
 }
-
 html.light ::-webkit-scrollbar-track {
     background: #e2e8f0; /* slate-200 */
+}
+
+/* --- (NOVO) Estilo do Header Dinâmico --- */
+header {
+    /* Adiciona box-shadow à transição para o efeito 'scrolled' */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+header.scrolled {
+    /* Cor de fundo mais sólida (slate-900) e sombra quando rolada */
+    background-color: #0f172a; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .font-supercell {
@@ -41,6 +49,22 @@ html.light ::-webkit-scrollbar-track {
     color: #3b82f6; /* blue-500 */
     transform: translateY(-2px);
 }
+
+/* --- (NOVO) Estilo do Link de Navegação Ativo --- */
+.nav-link.nav-active {
+    color: #3b82f6; /* blue-500 */
+    font-weight: 600; /* semi-bold */
+}
+/* Remove o efeito de subir no hover quando o link está ativo */
+.nav-link.nav-active:hover {
+    transform: translateY(0);
+}
+/* Estilo ativo para menu mobile */
+#mobile-menu a.nav-active {
+    background-color: #1e293b; /* slate-800 */
+    color: #3b82f6; /* blue-500 */
+}
+
 
 .page {
     display: none;
@@ -57,13 +81,14 @@ html.light ::-webkit-scrollbar-track {
 }
 
 .game-card {
-    /* (MODIFICADO) Adiciona background-color à transição */
+    /* (MODIFICADO) Adiciona background-color e box-shadow à transição */
     transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s ease;
     cursor: pointer;
 }
 .game-card:hover {
     transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    /* (NOVO) Adiciona um brilho sutil (glow) no hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 30px rgba(59, 130, 246, 0.3);
 }
 
 .gallery-image {
@@ -78,6 +103,15 @@ html.light ::-webkit-scrollbar-track {
 .like-button.liked {
     outline: 2px solid white;
     outline-offset: 2px;
+    /* (NOVO) Animação de "pop" ao curtir */
+    animation: like-pop 0.3s ease;
+}
+
+/* (NOVO) Keyframe para a animação do like */
+@keyframes like-pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
 }
 
 #back-to-top {
@@ -90,7 +124,7 @@ html.light ::-webkit-scrollbar-track {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    font-weight: 900;
+    font-weight: 900;
 }
 
 /* Supercell section background */
@@ -125,6 +159,22 @@ html.light ::-webkit-scrollbar-track {
 .supercell-hero img {
     border-radius: 0.5rem;
 }
+
+/* (NOVO) Imagem de fundo para o conteúdo da página "Sobre" */
+/* Como você sugeriu, um local para adicionar uma nova imagem de fundo */
+#supercell .bg-slate-800 {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Efeito parallax sutil */
+    
+    /* ADICIONE A SUA IMAGEM AQUI: 
+      Substitua 'CAMINHO/PARA/SUA/IMAGEM.png' pelo caminho da imagem
+      que você deseja usar como fundo sutil.
+    */
+    background-image: linear-gradient(rgba(30, 41, 59, 0.92), rgba(30, 41, 59, 0.92)), url('IMAGENS/garagen.png');
+}
+
 
 /* Home hero background */
 .home-hero {
