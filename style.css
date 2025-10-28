@@ -176,7 +176,7 @@ header.scrolled {
     background-position: center;
     background-attachment: fixed; /* Efeito parallax */
     /* Aplica a imagem de fundo com um gradiente escuro por cima */
-    background-image: linear-gradient(rgba(30, 41, 59, 0.92), rgba(30, 41, 59, 0.92)), url('IMAGENS/garagen.png');
+    background-image: linear-gradient(rgba(30, 41, 59, 0.92), rgba(30, 41, 59, 0.92)), url('IMAGENS/img 3d fundo texto super cell.jpg');
 }
 
 
