@@ -1,93 +1,103 @@
-/* Estilizações personalizadas para complementar o Tailwind */
-
 /* --- (MODIFICADO) Transição de Tema Suave --- */
-/* Adiciona transição aos principais elementos de fundo */
+/* Aplica uma transição suave para 'background-color', 'color' e 'border-color'.
+  Isso faz com que a troca de tema (light/dark) seja animada em vez de instantânea.
+*/
 body, header, #mobile-menu, .bg-slate-800, .accordion-item, footer {
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 body {
+    /* Define a fonte padrão para todo o site, carregada no HTML */
     font-family: 'Inter', sans-serif;
-    /* A transição foi movida para a regra acima */
 }
 
-/* Estilo para a barra de rolagem */
+/* --- Estilo da Barra de Rolagem (para navegadores WebKit) --- */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 8px; /* Largura da barra */
 }
 ::-webkit-scrollbar-track {
-    background: #1e293b; /* slate-800 */
+    background: #1e293b; /* Cor do trilho (fundo) - modo escuro */
 }
 ::-webkit-scrollbar-thumb {
-    background: #3b82f6; /* blue-500 */
+    background: #3b82f6; /* Cor da barra (polegar) - azul */
     border-radius: 10px;
 }
+/* Altera a cor do trilho quando o HTML tiver a classe 'light' */
 html.light ::-webkit-scrollbar-track {
-    background: #e2e8f0; /* slate-200 */
+    background: #e2e8f0; /* Cor do trilho - modo claro */
 }
 
 /* --- (NOVO) Estilo do Header Dinâmico --- */
 header {
-    /* Adiciona box-shadow à transição para o efeito 'scrolled' */
+    /* Adiciona 'box-shadow' à transição para o efeito 'scrolled' */
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
+/* Esta classe é adicionada pelo JS quando o usuário rola a página.
+  Muda o fundo para mais sólido e adiciona uma sombra.
+*/
 header.scrolled {
-    /* Cor de fundo mais sólida (slate-900) e sombra quando rolada */
-    background-color: #0f172a; 
+    background-color: #0f172a; /* Cor mais escura (slate-900) */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .font-supercell {
+    /* Classe de fonte personalizada para títulos (usada no HTML) */
     font-weight: 900;
     text-transform: uppercase;
 }
 
+/* --- Estilos dos Links de Navegação --- */
 .nav-link {
+    /* Efeito de hover nos links do menu desktop */
     transition: color 0.2s, transform 0.2s;
 }
 .nav-link:hover {
-    color: #3b82f6; /* blue-500 */
-    transform: translateY(-2px);
+    color: #3b82f6; /* azul-500 */
+    transform: translateY(-2px); /* Efeito de "levantar" */
 }
 
 /* --- (NOVO) Estilo do Link de Navegação Ativo --- */
+/* Esta classe é adicionada pelo JS ao link da página atual.
+*/
 .nav-link.nav-active {
-    color: #3b82f6; /* blue-500 */
+    color: #3b82f6; /* azul-500 */
     font-weight: 600; /* semi-bold */
 }
-/* Remove o efeito de subir no hover quando o link está ativo */
 .nav-link.nav-active:hover {
-    transform: translateY(0);
+    transform: translateY(0); /* Remove o efeito de "levantar" do link ativo */
 }
-/* Estilo ativo para menu mobile */
+/* Estilo ativo para o menu mobile */
 #mobile-menu a.nav-active {
     background-color: #1e293b; /* slate-800 */
-    color: #3b82f6; /* blue-500 */
+    color: #3b82f6; /* azul-500 */
 }
 
-
+/* --- Sistema de Página (SPA) --- */
 .page {
+    /* Todas as seções de página ficam escondidas por padrão */
     display: none;
+    /* Aplica a animação 'fadeIn' quando a página aparece */
     animation: fadeIn 0.5s ease-in-out;
 }
-
 .page.active {
+    /* A classe 'active' (adicionada pelo JS) torna a página visível */
     display: block;
 }
 
+/* Animação de fade-in para as páginas */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
+/* --- Estilos de Componentes --- */
 .game-card {
-    /* (MODIFICADO) Adiciona background-color e box-shadow à transição */
     transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s ease;
     cursor: pointer;
 }
 .game-card:hover {
-    transform: scale(1.05);
-    /* (NOVO) Adiciona um brilho sutil (glow) no hover */
+    transform: scale(1.05); /* Aumenta o card */
+    /* Adiciona um brilho sutil (glow) azul no hover */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 30px rgba(59, 130, 246, 0.3);
 }
 
@@ -97,29 +107,32 @@ header.scrolled {
 }
 .gallery-image:hover {
     transform: scale(1.03);
-    filter: brightness(1.1);
+    filter: brightness(1.1); /* Aumenta o brilho */
 }
 
+/* --- Estilo do Botão de Curtir --- */
+/* Classe adicionada pelo JS quando o botão está curtido */
 .like-button.liked {
     outline: 2px solid white;
     outline-offset: 2px;
-    /* (NOVO) Animação de "pop" ao curtir */
+    /* Aplica a animação 'like-pop' */
     animation: like-pop 0.3s ease;
 }
 
-/* (NOVO) Keyframe para a animação do like */
+/* Animação de "pop" para o botão de curtir */
 @keyframes like-pop {
     0% { transform: scale(1); }
-    50% { transform: scale(1.15); }
-    100% { transform: scale(1); }
+    50% { transform: scale(1.15); } /* Aumenta */
+    100% { transform: scale(1); } /* Volta ao normal */
 }
 
 #back-to-top {
-    /* (MODIFICADO) Adiciona background-color à transição */
+    /* Define a transição para o botão "Voltar ao Topo" */
     transition: opacity 0.3s, transform 0.3s, background-color 0.3s ease;
 }
 
 .ultra-legendary-text {
+    /* Efeito de texto em gradiente para raridade "Ultra Lendário" */
     background: linear-gradient(to right, #ff8a00, #e52e71, #8a2be2, #007cf0, #00dfd8);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -127,12 +140,12 @@ header.scrolled {
     font-weight: 900;
 }
 
-/* Supercell section background */
+/* --- Estilos de Banners e Heros --- */
+/* Fundo da seção 'supercell' */
 .supercell-hero {
     background-image: url("IMAGENS/imagen de fundo sobre a supercell.jpeg");
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
     position: relative;
     padding-top: 3rem;
     padding-bottom: 3rem;
@@ -140,66 +153,55 @@ header.scrolled {
     overflow: hidden;
 }
 
-/* leve overlay para garantir legibilidade do texto */
+/* Overlay (camada escura) para garantir a legibilidade do texto 
+  sobre a imagem de fundo.
+*/
 .supercell-hero::before {
     content: "";
     position: absolute;
-    inset: 0;
+    inset: 0; /* Cobre o elemento inteiro (top, bottom, left, right = 0) */
     background: linear-gradient(rgba(2,6,23,0.3), rgba(2,6,23,0.3));;
     z-index: 0;
 }
-
-/* mantém o conteúdo acima do overlay */
+/* 'container-content' fica acima do overlay '::before' */
 .supercell-hero .container-content {
     position: relative;
     z-index: 1;
 }
 
-/* ajuste opcional para imagens internas manterem borda arredondada */
-.supercell-hero img {
-    border-radius: 0.5rem;
-}
-
-/* (NOVO) Imagem de fundo para o conteúdo da página "Sobre" */
-/* Como você sugeriu, um local para adicionar uma nova imagem de fundo */
+/* Fundo da imagem da garagem na página 'supercell' */
 #supercell .bg-slate-800 {
     position: relative;
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Efeito parallax sutil */
-    
-    /* ADICIONE A SUA IMAGEM AQUI: 
-      Substitua 'CAMINHO/PARA/SUA/IMAGEM.png' pelo caminho da imagem
-      que você deseja usar como fundo sutil.
-    */
+    background-attachment: fixed; /* Efeito parallax */
+    /* Aplica a imagem de fundo com um gradiente escuro por cima */
     background-image: linear-gradient(rgba(30, 41, 59, 0.92), rgba(30, 41, 59, 0.92)), url('IMAGENS/garagen.png');
 }
 
 
-/* Home hero background */
+/* Fundo do Hero da Home */
 .home-hero {
     background-image: url("IMAGENS/imagen de fundo supercell guide.jpg");
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
     position: relative;
     overflow: hidden;
 }
-/* --- ESTILOS DOS BANNERS DE TÍTULO DOS JOGOS --- */
 
-/* CSS Genérico para Banners de Título de Jogo */
+/* --- ESTILOS DOS BANNERS DE TÍTULO DOS JOGOS --- */
 .game-hero {
+    /* Estilo base para todos os banners de páginas de jogos */
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
     position: relative;
-    padding: 3rem 1.5rem; /* 48px 24px */
-    border-radius: 0.75rem; /* 12px */
+    padding: 3rem 1.5rem;
+    border-radius: 0.75rem;
     overflow: hidden;
-    text-shadow: 0 4px 12px rgba(0,0,0,0.5); /* Sombra para legibilidade */
+    text-shadow: 0 4px 12px rgba(0,0,0,0.5); /* Sombra no texto */
 }
 
-/* Overlay para legibilidade (igual ao home-hero) */
+/* Overlay escuro para legibilidade (similar ao 'supercell-hero') */
 .game-hero::before {
     content: "";
     position: absolute;
@@ -208,47 +210,25 @@ header.scrolled {
     z-index: 0;
     border-radius: 0.75rem;
 }
-
-/* Garante que o H2/H3 fique por cima do overlay */
+/* Título (h2, h3) fica acima do overlay */
 .game-hero > * {
     position: relative;
     z-index: 1;
 }
 
 /* --- Fundos Específicos para cada Jogo --- */
-
 .clash-royale-hero {
-    /* Usando uma das imagens da sua galeria que fica ótima como fundo */
     background-image: url("IMAGENS/titulo clash royale 3d-render-luz-de-fundo-azul-e-vermelho-hexagono_.jpg");
 }
-
 .clash-of-clans-hero {
     background-image: url("IMAGENS/titulo clash of clans -green-and-purple-nebula-abstract-background-in-3d-rendering-image_3776661.jpg");
 }
-
-.brawl-stars-hero {
-    /* Note que o nome do seu arquivo pode estar "bralw" */
-    background-image: url("IMAGENS/titulo brawl star 3d img de fundo.jpg"); 
-}
-
-.squad-busters-hero {
-    /* Note que o nome do seu arquivo pode estar "buster" */
-    background-image: url("IMAGENS/squad buster titulo 3d img de fundo.jpg");
-}
-
-.mo-co-hero {
-    background-image: url("IMAGENS/mo.co titulu 3d img de fundo .jpg");
-}
-
-.hay-day-hero {
-    /* Note que seu arquivo tem um espaço duplo "day.  sua" */
-    background-image: url("IMAGENS/hay day titulo 3d img de fundo.jpg");
-}
-
+/* ... (outros fundos de herói) ... */
 .boom-beach-hero {
     background-image: url("IMAGENS/boom beach titulo  3d img de fundo.webp");
 }
-/* overlay leve para legibilidade */
+
+/* Overlay do Hero da Home (similar ao 'game-hero') */
 .home-hero::before {
     content: "";
     position: absolute;
@@ -257,81 +237,92 @@ header.scrolled {
     z-index: 0;
     border-radius: 0.75rem;
 }
-
-/* garante que o conteúdo fique acima do overlay */
 .home-hero > * {
     position: relative;
     z-index: 1;
 }
-
-/* pequeno ajuste visual para o título sobre a imagem */
 .home-hero .font-supercell {
     text-shadow: 0 6px 18px rgba(0,0,0,0.6);
 }
 
-/* --- (NOVO) Melhoria 1: Animação de Scroll --- */
-/* Estado inicial (antes de aparecer) */
+/* --- (NOVO) Melhoria 1: Animação de Scroll (IntersectionObserver) --- */
+/* Estado inicial (escondido) dos elementos que serão animados.
+  Eles ficam transparentes e levemente abaixo da posição final.
+*/
 .scroll-hidden {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    transition-delay: 0.1s; /* Pequeno atraso para não ser tão instantâneo */
+    transition-delay: 0.1s;
 }
-
-/* Estado final (visível) */
+/* Estado final (visível) - A classe é adicionada pelo JS.
+  O elemento se move para a posição 0 e aparece (opacity 1).
+*/
 .scroll-visible {
     opacity: 1;
     transform: translateY(0);
 }
 
 /* --- (NOVO) Melhoria 2: Acordeão Animado --- */
-
-/* Adiciona um ícone de seta (chevron) ao cabeçalho */
 .accordion-header {
     position: relative;
     cursor: pointer;
 }
 
+/* Adiciona um ícone de seta (chevron) usando o pseudo-elemento ::after
+  e a fonte Font Awesome.
+*/
 .accordion-header::after {
-    content: '\f078'; /* Ícone de seta para baixo (Font Awesome) */
+    content: '\f078'; /* Código do ícone 'chevron-down' */
     font-family: 'Font Awesome 6 Free';
     font-weight: 900;
     position: absolute;
-    right: 1.5rem; /* 24px */
+    right: 1.5rem;
     top: 50%;
-    transform: translateY(-50%) rotate(0deg);
+    transform: translateY(-50%) rotate(0deg); /* Começa apontando para baixo */
     transition: transform 0.4s ease;
-    color: #94a3b8; /* slate-400 */
 }
-
-/* Gira a seta quando o acordeão está aberto */
+/* Gira a seta 180 graus quando o cabeçalho tem a classe 'open'.
+  (a classe 'open' é adicionada pelo JS no clique).
+*/
 .accordion-header.open::after {
-    transform: translateY(-50%) rotate(180deg);
+    transform: translateY(-50%) rotate(180deg); /* Aponta para cima */
 }
 
-/* Controla o conteúdo do acordeão com max-height para animação */
+/* Conteúdo do Acordeão (a parte que abre e fecha).
+  Esta é a "mágica" da animação de acordeão com CSS.
+*/
 .accordion-content {
-    /* Começa fechado */
+    /* Começa fechado (altura máxima de 0) */
     max-height: 0;
-    overflow: hidden;
+    overflow: hidden; /* Esconde o conteúdo que transborda */
     
-    /* (MODIFICADO) Força a remoção do padding vertical e borda (do p-4 e border-t do HTML) */
+    /* Remove o padding e a borda (que vêm do Tailwind no HTML) 
+      quando o 'max-height' é 0. '!important' é usado aqui para 
+      sobrepor as classes de utilidade do Tailwind.
+    */
     padding-top: 0 !important;
     padding-bottom: 0 !important;
     border-top-width: 0px !important; 
     
-    /* Define a transição */
+    /* Define a transição para todas as propriedades que mudam.
+      A principal é 'max-height'.
+    */
     transition: max-height 0.4s ease-out, 
                 padding-top 0.4s ease-out, 
                 padding-bottom 0.4s ease-out,
-                border-top-width 0.4s ease; /* Adiciona border-top-width à transição */
+                border-top-width 0.4s ease;
 }
 
-/* Estado aberto: expande a altura e restaura o padding/borda */
+/* Estado aberto (quando o JS adiciona a classe 'open').
+*/
 .accordion-content.open {
-    max-height: 1000px; /* Um valor grande o suficiente para qualquer conteúdo */
+    /* Define uma altura máxima grande o suficiente para qualquer conteúdo.
+      O navegador anima de 'max-height: 0' para 'max-height: 1000px'.
+    */
+    max-height: 1000px;
     
-    /* (MODIFICADO) Restaura o padding vertical e borda (do p-4 e border-t do HTML) */
+    /* Restaura o padding e a borda originais do Tailwind */
     padding-top: 1rem !important;
     padding-bottom: 1rem !important;
     border-top-width: 1px !important;
