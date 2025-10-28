@@ -1,285 +1,312 @@
-# Supercell Universe - Fan Site
+Supercell Universe — Fan Site
+Bem-vindo ao Supercell Universe, um fan-site totalmente responsivo e interativo dedicado a explorar os jogos da Supercell. Este projeto foi construído como uma Single Page Application (SPA), utilizando HTML5, CSS3 e JavaScript puro (ES6+), sem o uso de frameworks.
 
-## 1. Sobre o Projeto
+O site apresenta um design moderno (com tema claro e escuro), animações de entrada suaves, e funcionalidades interativas como um sistema de "curtidas" persistente, tudo controlado por um roteador SPA customizado.
 
-Este projeto é um site de fã dinâmico e responsivo dedicado ao universo de jogos da Supercell. Ele foi construído como uma **Single Page Application (SPA)**, o que significa que o conteúdo é carregado dinamicamente sem a necessidade de recarregar a página inteira, proporcionando uma experiência de usuário fluida e rápida.
+🚀 Screenshots do Projeto
+Veja o design do site em ação (modo escuro):
 
-O site apresenta informações sobre a empresa Supercell e seus principais jogos, incluindo:
-* Clash Royale
-* Clash of Clans
-* Brawl Stars
-* Squad Busters
-* Mo.co
-* Hay Day
-* Boom Beach
+Página Inicial (Home)
 
-Ele é totalmente responsivo, adaptando-se a desktops, tablets e dispositivos móveis, e inclui recursos modernos como um seletor de tema (dark/light), animações e componentes interativos.
+Página Sobre a Supercell
 
----
+Página de Jogo (Clash Royale)
 
-## 2. Tecnologias Utilizadas
+Página de Jogo (Squad Busters)
 
-Este projeto foi construído utilizando um conjunto de tecnologias web front-end padrão:
+Página de Jogo (Mo.co)
 
-* **HTML5 (`index.htm`):** Para a estrutura semântica e o conteúdo do site.
-* **CSS3 (`style.css`):** Para estilizações personalizadas, animações e para complementar o framework CSS.
-* **JavaScript (ES6+) (`script.js`):** Para toda a interatividade, manipulação do DOM, navegação da SPA e gerenciamento de estado (como tema e curtidas).
-* **Tailwind CSS:** Um framework CSS "utility-first" usado para a maior parte da estilização, layout e responsividade.
-* **Font Awesome:** Para os ícones utilizados em todo o site (como o menu mobile, seletor de tema, botões de curtida, etc.).
-* **Google Fonts:** Utilizando a fonte 'Inter' para a tipografia geral do site.
+Página de Jogo (Boom Beach)
 
----
+🛠️ Tecnologias Utilizadas
+HTML5: Estrutura semântica para todas as 9 páginas de conteúdo.
 
-## 3. Estrutura de Arquivos
+CSS3 (Puro): Estilização customizada, animações (@keyframes), e design responsivo.
 
-/ │ ├── index.htm # O arquivo HTML principal que contém toda a estrutura da página. ├── style.css # A folha de estilos personalizada. ├── script.js # O arquivo JavaScript que controla toda a lógica do site. │ └── IMAGENS/ # (Pasta não fornecida, mas referenciada no HTML) ├── clash royale.jpg ├── clash of clans.jpg ├── bralw stars.jpg ├── squad buster.jpg ├── moco.jpg ├── hay day.jpg ├── boom beach.jpg ├── ... (e todas as outras imagens do jogo)
+TailwindCSS (via CDN): Classes utilitárias para prototipagem rápida e layout responsivo.
 
+JavaScript (ES6+): Lógica da SPA, manipulação do DOM e todas as funcionalidades interativas.
 
----
+Font Awesome (via CDN): Ícones (menu, botões de tema, links sociais, etc.).
 
-## 4. Funcionalidades Principais
+LocalStorage API: Utilizada para persistir os dados de "curtidas" no navegador do usuário.
 
-O site inclui um conjunto robusto de funcionalidades para criar uma experiência de usuário moderna:
+IntersectionObserver API: Utilizada para animações de scroll eficientes.
 
-* **Navegação de Página Única (SPA):** Clicar nos links de navegação não recarrega a página; em vez disso, o JavaScript exibe a seção de conteúdo relevante.
-* **Design Responsivo:** O layout se adapta perfeitamente a todos os tamanhos de tela, com um menu de navegação de desktop e um menu "hambúrguer" para dispositivos móveis.
-* **Seletor de Tema (Dark/Light):** Os usuários podem alternar entre um tema escuro (padrão) e um tema claro. A escolha é aplicada instantaneamente e afeta todos os componentes, incluindo a barra de rolagem.
-* **Botão "Voltar ao Topo":** Um botão que aparece suavemente quando o usuário rola a página para baixo, permitindo um retorno rápido ao topo com uma animação de rolagem suave.
-* **Componentes de Acordeão:** Nas páginas de detalhes dos jogos, o conteúdo é organizado em seções recolhíveis (acordeões) que o usuário pode expandir para ler mais.
-* **Botões de "Curtir" Interativos:** Cada página de jogo possui um botão de "curtir" que mantém o estado. Ele atualiza a contagem, muda o texto (ex: "Favoritar" para "Remover") e aplica um estilo visual (`.liked`) quando ativado.
-* **Animações Sutis:**
-    * `fadeIn` na transição de páginas.
-    * Efeitos de `hover` em cartões de jogo, imagens de galeria e links de navegação.
-    * Animação de "slide/fade" no botão "Voltar ao Topo".
+✨ Funcionalidades Principais (Deep Dive)
+Este projeto vai além de um site estático. Ele implementa diversas funcionalidades modernas de JavaScript e CSS.
 
----
+1. script.js - Lógica e Interatividade
+O arquivo script.js é o cérebro da aplicação, orquestrando a navegação, estado e eventos.
 
-## 5. Análise Detalhada dos Arquivos
+Roteador de Single Page Application (SPA)
+Função Principal: showPage(pageId)
 
-Esta seção detalha a implementação de cada arquivo.
+Como funciona:
 
-### 5.1. `index.htm` (A Estrutura)
+Esconde a página atual (.page.active) removendo a classe active.
 
-O HTML é o esqueleto do site. Ele usa Tailwind CSS para classes de utilidade e `id`s/`data-attributes` para serem alvo do JavaScript.
+Mostra a nova página (<section id="pageId">) adicionando a classe active.
 
-#### `<head>`
-* Importa o Tailwind CSS via CDN.
-* Importa a fonte 'Inter' do Google Fonts.
-* Importa o Font Awesome via CDN.
-* Linka a folha de estilos local `style.css`.
-* Define a classe padrão `dark` no `<html>` para que o tema escuro seja o padrão.
+Atualiza a variável global currentPage.
 
-#### `<header>` (Navegação)
-* **Navegação Desktop:** Contida em um `div` com a classe `hidden md:flex`.
-* **Navegação Mobile:** Um botão (`#mobile-menu-button`) e um `div` (`#mobile-menu`) que é `hidden` por padrão.
-* **Links de Navegação:** Todos os links (`<a>`) que devem acionar a navegação da SPA possuem o atributo `data-page="ID_DA_PAGINA"`.
-    * Ex: `<a href="#" data-page="clash-royale">Clash Royale</a>`
-* **Seletores de Tema:** Existem dois botões de tema, um para desktop (`#theme-toggle`) e um para mobile (`#theme-toggle-mobile`), para garantir a funcionalidade em ambos os layouts.
+Realiza um window.scrollTo({ top: 0, behavior: 'smooth' }) para levar o usuário ao topo da nova página.
 
-#### `<main>` (Conteúdo das Páginas)
-* Este é o contêiner principal para todas as "páginas" do site.
-* Cada página é, na verdade, uma tag `<section>` com uma `id` única e a classe `.page`.
-    * A classe `.page` (do `style.css`) define `display: none` por padrão.
-    * A classe `.page.active` (do `style.css`) define `display: block` e aplica a animação `fadeIn`.
-* **Páginas Implementadas:**
-    * `id="home"`: A página inicial com cartões de jogo (`.game-card`).
-    * `id="supercell"`: Página "Sobre" a empresa.
-    * `id="clash-royale"`: Página de detalhes do Clash Royale.
-    * `id="clash-of-clans"`: Página de detalhes do Clash of Clans.
-    * `id="brawl-stars"`: Página de detalhes do Brawl Stars.
-    * `id="squad-busters"`: Página de detalhes do Squad Busters.
-    * `id="mo-co"`: Página de detalhes do Mo.co.
-    * `id="hay-day"`: Página de detalhes do Hay Day.
-    * `id="boom-beach"`: Página de detalhes do Boom Beach.
-
-* **Componentes nas Páginas:**
-    * **`.game-card`:** Cartões na página inicial que também funcionam como gatilhos de navegação (`data-page="..."`).
-    * **`.accordion-header`:** Botões clicáveis para expandir o conteúdo (`.accordion-content`) abaixo deles.
-    * **`.like-button`:** Botões de "curtir" específicos para cada jogo (ex: `#like-cr`, `#like-coc`).
-
-#### `<footer>`
-* Contém links de rodapé padrão, informações de direitos autorais e links de mídia social.
-
-#### Botão Flutuante
-* Um botão (`#back-to-top`) posicionado de forma fixa (`fixed`) que é controlado pelo `script.js`.
-
----
-
-### 5.2. `style.css` (A Estilização Personalizada)
-
-Este arquivo complementa o Tailwind com estilos que são difíceis ou repetitivos de se fazer apenas com classes de utilidade.
-
-#### Estilos Globais
-* **`body`**: Define a fonte padrão (`Inter`) e uma transição suave para `background-color` e `color`, que é usada na troca de tema.
-
-#### Barra de Rolagem Personalizada
-* Utiliza pseudo-elementos `::-webkit-scrollbar` para estilizar a barra de rolagem.
-* `::-webkit-scrollbar-track`: Define a cor de fundo do trilho.
-* `::-webkit-scrollbar-thumb`: Define a cor do "polegar" (a parte que se move).
-* **Suporte ao Tema Claro:** Usa `html.light ::-webkit-scrollbar-track` para inverter a cor do trilho quando o tema claro está ativo.
-
-```css
-/* Estilo para a barra de rolagem */
-::-webkit-scrollbar-track {
-    background: #1e293b; /* slate-800 */
-}
-html.light ::-webkit-scrollbar-track {
-    background: #e2e8f0; /* slate-200 */
-}
-Classes de Tipografia
-.font-supercell: Uma classe de fonte personalizada para títulos, tornando-os font-weight: 900 e text-transform: uppercase.
-
-.ultra-legendary-text: Um efeito de texto em gradiente avançado, usado na lista de Brawlers.
-
-CSS
-
-.ultra-legendary-text {
-    background: linear-gradient(...);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-Sistema de Página (SPA)
-.page: Oculta todas as seções de página por padrão.
-
-.page.active: Mostra a página ativa e aplica a animação fadeIn.
-
-CSS
-
-.page {
-    display: none;
-    animation: fadeIn 0.5s ease-in-out;
-}
-.page.active {
-    display: block;
-}
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-Estilos de Componentes e Hover
-.nav-link:hover: Muda a cor do link e o move ligeiramente para cima (transform: translateY(-2px)).
-
-.game-card:hover: Aumenta o tamanho do cartão (scale(1.05)) e adiciona uma sombra mais pronunciada.
-
-.gallery-image:hover: Aumenta ligeiramente a imagem e aumenta seu brilho (filter: brightness(1.1)).
-
-.like-button.liked: Adiciona um contorno branco ao botão de curtir quando ele está no estado "curtido".
-
-#back-to-top: Define a transição para opacidade e transformação, permitindo que o JS o mostre e oculte suavemente.
-
-5.3. script.js (A Lógica e Interatividade)
-Este arquivo dá vida ao site. Ele é envolvido por um listener DOMContentLoaded para garantir que o script só seja executado após o HTML estar totalmente carregado.
-
-Funções Globais
-showPage(pageId): A função central da SPA.
-
-Remove a classe .active da página atual (armazenada na variável currentPage).
-
-Adiciona a classe .active à nova página (cujo id foi passado como pageId).
-
-Atualiza a variável currentPage.
-
-Rola a janela para o topo suavemente (window.scrollTo).
-
-toggleMobileMenu(): Simplesmente alterna (adiciona/remove) a classe hidden no elemento #mobile-menu.
-
-Funcionalidade 1: Navegação Única (Event Delegation)
-Em vez de adicionar um EventListener a cada link de navegação, usamos delegação de eventos.
-
-Um único EventListener de clique é adicionado ao document.body.
-
-Quando um clique ocorre, ele usa event.target.closest('[data-page]') para verificar se o clique (ou um de seus pais) é um elemento com o atributo data-page.
-
-Vantagens:
-
-Eficiência: Apenas um listener para dezenas de links.
-
-Dinamismo: Funciona até para links adicionados dinamicamente no futuro.
-
-Se um gatilho de navegação for encontrado, ele chama showPage() e também fecha o menu mobile (se estiver aberto).
+Atualização de Navegação Ativa: A função também percorre todos os links [data-page] e adiciona a classe .nav-active apenas ao link que corresponde à página recém-aberta, fornecendo feedback visual ao usuário (visto em style.css).
 
 JavaScript
 
-// --- Funcionalidade 1: Navegação Única (Event Delegation) ---
-document.body.addEventListener('click', (event) => {
-    const navTrigger = event.target.closest('[data-page]');
-    if (navTrigger) {
-        event.preventDefault(); // Previne a ação padrão do link
-        const pageId = navTrigger.dataset.page;
-        showPage(pageId);
-        // ... (lógica para fechar o menu mobile)
+// Exemplo da lógica de navegação ativa
+document.querySelectorAll('[data-page]').forEach(link => {
+    link.classList.remove('nav-active');
+    if (link.dataset.page === pageId) {
+        link.classList.add('nav-active');
     }
 });
-Funcionalidade 3: Tema Light/Dark
-Adiciona listeners de clique aos dois botões de tema (#theme-toggle e #theme-toggle-mobile).
+Event Delegation: Para otimizar a performance, apenas um listener de clique é adicionado ao document.body. Ele captura cliques em qualquer elemento-filho que possua o atributo [data-page], prevenindo o comportamento padrão e chamando showPage().
 
-Ambos chamam a função handleThemeToggle.
+Sistema de "Curtidas" Persistente
+Tecnologia: localStorage
 
-Esta função alterna as classes .dark e .light no elemento <html>.
+Como funciona:
 
-Em seguida, ela atualiza o ícone do Font Awesome dentro dos botões para refletir o novo estado (de fa-sun para fa-moon e vice-versa).
+Chaves de Armazenamento:
 
-Funcionalidade 4: Botão "Voltar ao Topo"
-Define uma função window.onscroll.
+supercellFanLikes: Armazena um JSON com a contagem de curtidas (ex: {"like-cr": 10, "like-coc": 5}).
 
-Esta função verifica a posição de rolagem (document.documentElement.scrollTop).
+supercellFanLikedButtons: Armazena um JSON com o estado "curtido" (ex: {"like-cr": true}).
 
-Se a rolagem for > 100px, ele altera o CSS do botão para display: "flex", opacity: "1" e transform: "translateY(0)".
+loadLikes(): Chamada no DOMContentLoaded, esta função lê os dados do localStorage e os carrega nas variáveis likeCounts e likedButtons. Em seguida, atualiza a UI (contagens e estado visual dos botões) antes mesmo do usuário interagir.
 
-Se a rolagem for <= 100px, ele reverte a opacidade e a transformação.
+Lógica de Clique: Ao clicar em .like-button:
 
-Um setTimeout é usado para definir display: "none" após a animação de desaparecimento (300ms) para remover o elemento do fluxo.
+O estado isLiked é invertido.
 
-Adiciona um listener de clique ao botão que chama window.scrollTo({ top: 0, behavior: 'smooth' }).
+A contagem (currentCount) é incrementada ou decrementada.
 
-Funcionalidade 5: Acordeão
-Seleciona todos os elementos com a classe .accordion-header.
+A classe .liked é adicionada ou removida (ativando a animação like-pop do CSS).
 
-Itera sobre cada um (forEach) e adiciona um listener de clique.
+O texto do botão é alterado (ex: "Favoritar" ↔ "Remover").
 
-Quando um cabeçalho é clicado, ele encontra o próximo elemento irmão (header.nextElementSibling, que é o .accordion-content).
+A contagem no <span> é atualizada.
 
-Ele então alterna a classe hidden nesse elemento de conteúdo, fazendo-o aparecer ou desaparecer.
+saveLikes(): Após qualquer clique, esta função é chamada para salvar os objetos likeCounts e likedButtons de volta no localStorage, garantindo que os dados persistam se o usuário recarregar a página.
 
-Funcionalidade 6: Botão de Curtir (com Toggle)
-Esta é a lógica mais complexa de gerenciamento de estado.
+Animações de Scroll (IntersectionObserver)
+Tecnologia: IntersectionObserver API.
 
-Seleciona todos os .like-button e itera sobre eles.
+Por que: Esta API é muito mais performática do que usar window.onscroll para animações de "revelar ao rolar".
 
-Para cada botão, ele cria um estado local (let isLiked = false).
+Como funciona:
 
-Adiciona um listener de clique:
+Um observer é criado para observar elementos.
 
-Chama event.stopPropagation(): Isso é crucial. Se o botão de curtir estiver dentro de um .game-card (que também é clicável), isso impede que o clique "borbulhe" para o card e acione a navegação da página.
+Todos os elementos-alvo (listados abaixo) recebem a classe .scroll-hidden (que os define como opacity: 0 e transform: translateY(30px) via CSS).
 
-Inverte o estado: isLiked = !isLiked.
+Quando um elemento entra na tela (limiar de 10%), o callback do observador é disparado.
 
-Usa um if (isLiked) para determinar a ação:
+O callback adiciona a classe .scroll-visible (que anima para opacity: 1 e transform: translateY(0)).
 
-Se curtiu: Incrementa o contador (<span>), adiciona a classe .liked (para o CSS) e muda o texto para "Remover".
+O observer.unobserve(entry.target) é chamado para que a animação ocorra apenas uma vez.
 
-Se removeu a curtida: Decrementa o contador, remove a classe .liked e restaura o texto original.
+Elementos Animados:
+
+.game-card
+
+.gallery-image
+
+.accordion-item
+
+.home-hero
+
+.game-hero
+
+Elementos do grid na página "Sobre" (.supercell-hero .grid > *)
 
 JavaScript
 
-// --- Funcionalidade 6: Botão de Curtir (com Toggle) ---
-likeButtons.forEach(button => {
-    // ... (configuração inicial)
-    let isLiked = false;
-
-    button.addEventListener('click', (event) => {
-        event.stopPropagation(); // Impede o clique de navegar na página
-        isLiked = !isLiked; // Inverte o estado
-
-        if (isLiked) {
-            // Ação: Curtir
-            countSpan.textContent = parseInt(countSpan.textContent) + 1;
-            button.classList.add('liked');
-            textNode.textContent = ' Remover ';
-        } else {
-            // Ação: Remover curtida
-            // ... (lógica inversa)
+// Configuração do Observer
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('scroll-visible');
+            observer.unobserve(entry.target);
         }
     });
-});
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }); // Dispara 50px antes de chegar
+Efeitos de Scroll (Header e "Back to Top")
+Tecnologia: window.onscroll
+
+Header Dinâmico: Quando scrollPosition > 50, a classe .scrolled é adicionada ao <header>. O CSS (style.css) usa isso para aplicar um fundo mais sólido e uma sombra, criando um efeito de "blur" que se solidifica.
+
+Botão Voltar ao Topo: Quando scrollPosition > 100, o botão (#back-to-top) tem seu display e opacity alterados para aparecer suavemente (animado via CSS). Clicar nele aciona window.scrollTo({ top: 0, behavior: 'smooth' }).
+
+Acordeões Animados
+Como funciona: A lógica JS é simples: ao clicar em .accordion-header, ele alterna (toggle) a classe .open no próprio header e no seu irmão (.accordion-content).
+
+O CSS faz todo o trabalho de animação:
+
+.accordion-content tem max-height: 0 e overflow: hidden.
+
+.accordion-content.open tem max-height: 1000px (ou um valor grande o suficiente).
+
+Uma transition: max-height 0.4s ease-out no style.css cria a animação de "deslizar" suavemente.
+
+O ícone de seta (::after) também é animado no CSS, rotacionando 180 graus quando o header tem a classe .open.
+
+Tema Light/Dark
+A função handleThemeToggle alterna as classes dark e light na tag <html>.
+
+O CSS (incluindo o Tailwind) usa seletores como html.light ... ou dark:... (do Tailwind) para estilizar tudo.
+
+O script também atualiza os ícones (Sol/Lua) nos botões de tema (desktop e mobile).
+
+2. style.css - Estilização e Animações
+O style.css complementa o TailwindCSS com estilos customizados e animações.
+
+Barra de Rolagem Customizada: Estiliza a barra de rolagem (::-webkit-scrollbar) e muda sua cor de fundo baseada no tema (html.light ::-webkit-scrollbar-track).
+
+Animações de Keyframe:
+
+@keyframes fadeIn: Usado pelas páginas .page.active para um fade-in suave ao navegar.
+
+@keyframes like-pop: Usado pelo .like-button.liked para dar um "pulo" ao ser clicado.
+
+Banners de Jogo (Hero Sections):
+
+.game-hero define o estilo base (padding, sombra no texto, overlay escuro com ::before para legibilidade).
+
+Classes específicas definem a imagem de fundo para cada página:
+
+.clash-royale-hero
+
+.clash-of-clans-hero
+
+.brawl-stars-hero
+
+.squad-busters-hero
+
+.mo-co-hero
+
+.hay-day-hero
+
+.boom-beach-hero
+
+Transições Suaves: Uma transição global (background-color 0.3s ease, color 0.3s ease) é aplicada ao body e outros elementos principais para garantir que a troca de tema seja suave.
+
+Efeitos de Hover:
+
+.game-card:hover: Aumenta (scale(1.05)) e adiciona um "glow" (box-shadow).
+
+.nav-link:hover: Levanta levemente (transform: translateY(-2px)).
+
+Texto Ultra Lendário: A classe .ultra-legendary-text (usada na página do Brawl Stars) usa linear-gradient e background-clip: text para criar um efeito de texto em gradiente animado.
+
+3. index.htm - Estrutura e Conteúdo
+O arquivo HTML define a estrutura de todas as "páginas" (seções) do site.
+
+Páginas (Seções): O conteúdo é dividido em <section> com IDs:
+
+#home
+
+#supercell
+
+#clash-royale
+
+#clash-of-clans
+
+#brawl-stars
+
+#squad-busters
+
+#mo-co
+
+#hay-day
+
+#boom-beach
+
+Assets e Imagens: O HTML referencia imagens da pasta IMAGENS/ para os cards e galerias. As imagens de fundo dos heróis (listadas acima) são referenciadas no style.css.
+
+Exemplos de Imagens de Card:
+
+IMAGENS/clash royale.jpg
+
+IMAGENS/clash of clans.jpg
+
+IMAGENS/bralw stars.jpg
+
+IMAGENS/squad buster.jpg
+
+IMAGENS/moco.jpg
+
+IMAGENS/hay day.jpg
+
+IMAGENS/boom beach.jpg
+
+Exemplos de Imagens de Galeria:
+
+IMAGENS/Arena clash royale.1.jpg
+
+IMAGENS/vila clash clan.jpg
+
+IMAGENS/bralw godizilla evento.jpg
+
+IMAGENS/squad buster motando os time .jpg
+
+IMAGENS/mo.co matando monstros .jpg
+
+IMAGENS/hay day. sua fazenda .jpg
+
+IMAGENS/boom beach ataque a praia.jpg
+
+Exemplos de Imagens de Fundo (Hero):
+
+IMAGENS/titulo clash royale 3d-render-luz-de-fundo-azul-e-vermelho-hexagono_.jpg
+
+IMAGENS/titulo brawl star 3d img de fundo.jpg
+
+IMAGENS/mo.co titulu 3d img de fundo .jpg
+
+(e assim por diante para todos os 7 jogos)
+
+📂 Estrutura de Arquivos
+/
+├── index.htm               # Arquivo HTML principal com todas as seções/páginas
+├── style.css               # Folha de estilo customizada, animações e temas
+├── script.js               # Lógica da SPA, listeners de evento e interatividade
+├── README.md               # Este arquivo
+├── IMAGENS/                  # Pasta contendo todas as imagens de jogos, cards e fundos
+│   ├── clash royale.jpg
+│   ├── titulo clash royale...
+│   ├── ... (e todas as outras imagens)
+├── audio/                    # Pasta para arquivos de áudio
+│   ├── Sneak golem.m4a
+└── .vscode/
+    └── settings.json       # (Opcional) Configurações do Live Server
+🏃 Como Executar Localmente
+Clone ou baixe este repositório.
+
+Como o projeto usa TailwindCSS e Font Awesome via CDN, você não precisa instalar dependências (npm install).
+
+Para a melhor experiência (e para evitar problemas de CORS com alguns navegadores), rode o projeto usando um servidor local.
+
+Se você usa o VS Code, a extensão Live Server é recomendada.
+
+Clique com o botão direito em index.htm e selecione "Open with Live Server".
+
+O projeto está configurado no .vscode/settings.json para tentar usar a porta 5501, mas qualquer porta funcionará.
+
+Se não tiver o Live Server, você pode simplesmente abrir o arquivo index.htm diretamente no seu navegador.
+
+📈 Melhorias Futuras
+Persistir Tema: Salvar a preferência de tema (light/dark) do usuário no localStorage.
+
+Otimização de Performance:
+
+Otimizar imagens (converter para .webp).
+
+Adicionar loading="lazy" às imagens da galeria.
+
+Modal de Galeria: Fazer com que as imagens da galeria (.gallery-image) abram em um modal "lightbox" ao serem clicadas.
+
+Refatoração: Mover o conteúdo de texto do HTML para um arquivo content.json e carregá-lo dinamicamente, tornando o index.htm mais limpo.
