@@ -1,6 +1,4 @@
-/* --- (MODIFICADO) Transição de Tema Suave --- */
-/* Aplica uma transição suave para 'background-color', 'color' e 'border-color'.
-  Isso faz com que a troca de tema (light/dark) seja animada em vez de instantânea.
+/* --- ESTILOS GLOBAIS --- */
 */
 body, header, #mobile-menu, .bg-slate-800, .accordion-item, footer {
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
@@ -26,8 +24,7 @@ body {
 html.light ::-webkit-scrollbar-track {
     background: #e2e8f0; /* Cor do trilho - modo claro */
 }
-
-/* --- (NOVO) Estilo do Header Dinâmico --- */
+/* --- Estilos do Header (Cabeçalho) --- */
 header {
     /* Adiciona 'box-shadow' à transição para o efeito 'scrolled' */
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
@@ -56,7 +53,6 @@ header.scrolled {
     transform: translateY(-2px); /* Efeito de "levantar" */
 }
 
-/* --- (NOVO) Estilo do Link de Navegação Ativo --- */
 /* Esta classe é adicionada pelo JS ao link da página atual.
 */
 .nav-link.nav-active {
@@ -267,9 +263,7 @@ header.scrolled {
     text-shadow: 0 6px 18px rgba(0,0,0,0.6);
 }
 
-/* --- (NOVO) Melhoria 1: Animação de Scroll (IntersectionObserver) --- */
-/* Estado inicial (escondido) dos elementos que serão animados.
-  Eles ficam transparentes e levemente abaixo da posição final.
+
 */
 .scroll-hidden {
     opacity: 0;
@@ -348,4 +342,193 @@ header.scrolled {
     padding-top: 1rem !important;
     padding-bottom: 1rem !important;
     border-top-width: 1px !important;
+}
+/* Este bloco inteiro define os estilos para html.light */
+
+/* 1. Estilos Globais (Corpo) */
+html.light body {
+    background-color: #f1f5f9; /* slate-100 */
+    color: #1e293b; /* slate-800 */
+}
+
+/* 2. Header e Menu Mobile */
+html.light header {
+    /* Usa branco com transparência para o efeito de backdrop-blur */
+    background-color: rgba(255, 255, 255, 0.8); 
+    border-bottom: 1px solid #e2e8f0; /* slate-200 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+html.light #mobile-menu {
+    background-color: #ffffff; /* white */
+    border-top-color: #e2e8f0; /* slate-200 */
+}
+
+/* 3. Header no estado "scrolled" (rolado) */
+html.light header.scrolled {
+    background-color: #ffffff; /* branco sólido */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 4. Links de Navegação e Texto do Header */
+html.light .nav-link,
+html.light #theme-toggle,
+html.light #theme-toggle-mobile {
+    color: #475569; /* slate-600 */
+}
+/* Links ativos ou em hover */
+html.light .nav-link.nav-active,
+html.light .nav-link:hover,
+html.light #theme-toggle:hover,
+html.light #theme-toggle-mobile:hover {
+    color: #3b82f6; /* blue-500 */
+}
+/* Logo e Botão Hamburguer */
+html.light header a[data-page="home"],
+html.light #mobile-menu-button {
+    color: #1e293b; /* slate-800 */
+}
+
+/* 5. Links do Menu Mobile */
+html.light #mobile-menu a {
+    color: #475569; /* slate-600 */
+}
+html.light #mobile-menu a:hover {
+    background-color: #f1f5f9; /* slate-100 */
+}
+/* Link ativo no menu mobile */
+html.light #mobile-menu a.nav-active {
+    background-color: #f1f5f9; /* slate-100 */
+    color: #3b82f6; /* blue-500 */
+}
+
+/* 6. Cards, Acordeões e Caixas de Conteúdo */
+html.light .game-card,
+html.light .accordion-item,
+html.light .bg-slate-800 {
+    background-color: #ffffff; /* white */
+    /* Adiciona uma borda sutil no modo claro */
+    border: 1px solid #e2e8f0; /* slate-200 */
+}
+
+/* 7. Fundo especial da seção "Sobre" (com parallax) */
+html.light #supercell .bg-slate-800 {
+     /* Mantém a imagem, mas muda o gradiente de overlay para claro */
+     background-image: linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)), url('IMAGENS/img 3d fundo texto super cell.jpg');
+}
+
+/* 8. Textos Gerais */
+/* Títulos (ex: "O que é Clash Royale?") */
+html.light .text-slate-100 {
+    color: #1e293b; /* slate-800 */
+}
+/* Texto principal (parágrafos) */
+html.light .text-slate-300 {
+    color: #334155; /* slate-700 */
+}
+/* Texto secundário (descrições de card, etc) */
+html.light .text-slate-400 {
+    color: #64748b; /* slate-500 */
+}
+/* Texto de áudio */
+html.light .text-slate-500 {
+    color: #94a3b8; /* slate-400 */
+}
+
+/* 9. Componentes (Acordeão, Botão de Like, Áudio) */
+/* Borda interna do acordeão */
+html.light .accordion-content {
+    border-top-color: #e2e8f0 !important; /* slate-200 */
+}
+/* Outline do botão de like "curtido" */
+html.light .like-button.liked {
+    outline-color: #1e293b; /* slate-800 */
+}
+/* Inverte as cores do player de áudio padrão do navegador */
+html.light audio {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+/* 10. Rodapé */
+html.light footer {
+    background-color: #f8fafc; /* slate-50 */
+    border-top-color: #e2e8f0; /* slate-200 */
+}
+html.light footer .text-slate-400,
+html.light footer a {
+    color: #64748b; /* slate-500 */
+}
+html.light footer a:hover {
+    color: #3b82f6; /* blue-500 */
+}
+/* --- FIM DOS ESTILOS DO MODO CLARO --- */
+*/
+button:focus-visible,
+a:focus-visible,
+.accordion-header:focus-visible {
+    outline: 3px solid #60a5fa; /* blue-400 */
+    outline-offset: 3px;
+    border-radius: 4px; /* Adiciona um leve arredondamento ao anel */
+    transition: none; /* Faz o outline aparecer imediatamente */
+}
+
+/* Remove o outline padrão se o :focus-visible não for suportado */
+button:focus,
+a:focus,
+.accordion-header:focus {
+    outline: none;
+}
+
+/* 2. Efeitos de Hover nos Ícones Sociais (Rodapé) */
+footer .fab {
+    /* Adiciona transição aos ícones */
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+footer .fab:hover {
+    transform: scale(1.2) rotate(5deg); /* Aumenta e gira levemente */
+}
+/* Cores específicas de cada marca no hover */
+footer .fa-youtube:hover { color: #FF0000; }
+footer .fa-twitter:hover { color: #1DA1F2; }
+footer .fa-instagram:hover { color: #E4405F; }
+
+/* 3. Animação de Texto nos Banners (Heros) */
+/* Faz os títulos H1 e H2 dos banners (home e jogos) 
+  deslizarem para cima quando a página é carregada.
+*/
+.game-hero h2, 
+.home-hero h1,
+.game-hero h3,
+.home-hero p {
+    /* Usa a animação 'slideInUp' definida abaixo */
+    animation: slideInUp 0.7s ease-out;
+    animation-fill-mode: backwards; /* Garante estado inicial */
+}
+/* Define atrasos diferentes para um efeito escalonado */
+.home-hero p {
+    animation-delay: 0.1s;
+}
+.home-hero button {
+     animation: slideInUp 0.7s ease-out;
+     animation-delay: 0.2s;
+     animation-fill-mode: backwards;
+}
+.game-hero h3 {
+    animation-delay: 0.1s;
+}
+
+/* Define a animação de deslizar e aparecer */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 4. Sombra mais pronunciada nos Game Cards no modo claro */
+html.light .game-card:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1), 0 0 20px rgba(59, 130, 246, 0.2);
 }
