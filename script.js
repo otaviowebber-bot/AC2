@@ -22,7 +22,7 @@ function showPage(pageId) {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // --- MELHORIA: Atualiza links de navegação ativos ---
+    // 3. Atualiza os links de navegação para refletir a página ativa
     // Percorre TODOS os links de navegação (desktop e mobile)
     document.querySelectorAll('[data-page]').forEach(link => {
         link.classList.remove('nav-active'); // Remove a classe ativa de todos
@@ -269,8 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // --- (NOVO) Funcionalidade 7: Animação de Scroll (IntersectionObserver) ---
-    // Esta API é muito mais eficiente do que 'window.onscroll' para animações.
+    // ---  Funcionalidade 7: Animação de Scroll (IntersectionObserver) ---
     // Ela "observa" elementos e dispara uma função quando eles entram na tela.
     const observer = new IntersectionObserver((entries, observer) => {
         // 'entries' é uma lista de elementos que mudaram de estado
